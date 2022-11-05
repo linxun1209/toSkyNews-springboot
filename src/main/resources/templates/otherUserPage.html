@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>未来新闻</title>
+    <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="css/yxy/otherUserPage.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/wzz/new.min.css">
+</head>
+<body>
+    <!-- 弹窗 -->
+<div class="chooseCover">
+    <div class="tip">
+        <p class="tipText">确定要删除吗</p>
+        <div class="choose">
+            <button class="tipNo">取消</button>
+            <button class="tipOk">确定</button>
+        </div>
+    </div>
+</div>
+<div class="sureCover">
+    <div class="successTip">
+        <p class="successText">删除成功！</p>
+        <button class="successOk">确定</button>
+    </div>
+</div>
+<!-- 其他用户主页 -->
+<div class="personList">
+    <div class="addBtn">
+        <button class="left" index=0><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+        <button class="right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        <button class="leftAtt" index=0><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+        <button class="rightAtt"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        <div class="listNav">
+            <span class="fansNav">粉丝&nbsp&nbsp<span class="fansNum">0</span></span>
+            <span class="focusNav">关注&nbsp&nbsp<span class="focusNum">2</span></span>
+            <span class="close"><i class="fa fa-close"></i></span>
+        </div>
+        <div class="nullBox">
+            <p class="nullText"><i class="fa fa-user-times" aria-hidden="true"></i>还没有粉丝哦！</p>
+        </div>
+        <ul class="fansList"></ul>
+    </div>
+</div>
+<div id="all_top">
+    <div class="container2">
+        <div class="column_sort">
+            <a href="javascript:;">综合</a>
+            <a href="javascript:;">科学</a>
+            <a href="javascript:;">体育</a>
+            <a href="javascript:;">竞赛</a>
+            <a href="javascript:;">游戏</a>
+            <a href="javascript:;">娱乐</a>
+            <a href="javascript:;">其他</a>
+        </div>
+        <div class="top_find">
+            <input type="text" class="food_find_input" placeholder=" 请输入您要寻找的文章与描述">
+            <a href="javascript:;" class="food_find_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+        </div>
+        <button id="back_history" onclick="window.history.go(-1);">
+            <i class="fa fa-reply-all" aria-hidden="true"></i>
+        <btton>
+        <!-- <a class="top_land top_left" href="javascript:;">
+            登录
+        </a> -->
+    </div>
+</div>
+<!-- 侧边框 -->
+<div class="tool_item">
+    <a class="tool_item_a" href=""><i class="fa fa-refresh" aria-hidden="true"></i> 刷新</a>
+    <a class="tool_item_a" onclick="Feedback_show()" href="javascript:;"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i>反馈</a>
+    <a class="tool_item_a" onclick="Topfun()" href="javascript:;"><i class="fa fa-arrow-up" style="font-size: 18px;" aria-hidden="true"></i>置顶</a>
+</div>
+
+<!-- 页面主内容 -->
+<div class="allPage">
+    <div class="tip">
+        <p class="tipText">确定要删除吗</p>
+        <div class="choose">
+            <button class="tipNo">取消</button>
+            <button class="tipOk">确定</button>
+        </div>
+    </div>
+    <div class="successTip">
+        <p class="successText">删除成功！</p>
+        <button class="successOk">确定</button>
+    </div>
+    <div class="likeBox">
+        <p class="userName">哇偶</p>
+        <p>共获得<span class="likeNum">0</span>个赞哦</p>
+        <i class="	fa fa-thumbs-o-up" style="color: rgb(221, 127, 143);"></i>
+        <button class="know">我知道了</button>
+    </div>
+    <div class="userBox">
+        <div class="userPrivate">
+            <div class="userHead"></div>
+            <i class="fa fa-venus" style="color: pink; " id="girl"></i><i class="fa fa-mars" id="boy"></i><div class="userName"></div>
+        </div>
+        <div class="userInform">
+            <span class="accountText">账号:</span><span class="account"></span>
+            <span class="focusOther">关注TA</span>
+            <div class="relation">
+                <span class="like"><span class="likeNum"></span>获赞</span>
+                <span class="fans"><span class="fansNum"></span>粉丝</span>
+                <span class="focus"><span class="focusNum"></span>关注</span>
+            </div>
+            <div class="brief"><span>个人简介:</span>&nbsp;&nbsp;<p class="briefText"></p></div>
+        </div>
+
+    </div>
+
+    <!-- 列表部分 -->
+    <div class="works">
+        <div class="workNav">
+            <span class="myWorksNav" page="0">TA的作品<span class="workNum"></span></span>
+            <span class="collectWorkNav" page="0">TA的收藏<span class="collectNum"></span></span>
+            <i class="fa fa-search" aria-hidden="true" id="find"></i>
+        </div>
+        <div class="searchNav">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" class="searchInput" placeholder="搜索TA的作品"/>
+            <span class="searchBox">搜索</span>
+            <span class="cancel">取消</span>
+        </div>
+        <div class="myWorks"></div>
+        <div class="loveWorks"></div>
+        <div class="workList">
+            <!-- 没有作品时 -->
+            <div class="empty">
+                <i class="	fa fa-file-text-o"></i>
+                <p class="noWork">暂未发表作品</p>
+            </div>
+            <!-- 有作品时 -->
+            <div class="haveWorks"></div>
+            <span class="moreWorks">加载更多</span>
+            <span class="moreCollect">加载更多</span>
+        </div>
+    </div>
+
+</div>
+<script src="js/jquery-3.6.0.js"></script>
+<script src="js/yxy/otherUserPage.js"></script>
+<script src="js/yxy/otherUserGet.js"></script>
+<script src="js/yxy/userBoxView.js"></script>
+</body>
+</html>

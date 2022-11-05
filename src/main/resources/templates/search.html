@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来头条</title>
+   <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" type="text/css" href="css/lsw/search.css">
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
+    <script src="js/lsw/jquery.min.js"></script>
+    <script src="js/lsw/searchFuzzy.js"></script>
+</head>
+<body>
+<div id="center">
+    <div id="searchHeader">
+        <div id="toproll">
+            <div id="centerFrame">
+                <div id="search_icon">
+                    <a id="tosky" href="user_main">TOSKY</a>
+                </div>
+                <div id="searchFrame">
+                    <input type="text" class="input_text" id="input_text" name="word" placeholder="请输入信息" />
+                    <button type="submit" class="input_sub" onclick="search();">
+                        <i class="icon ion-search" style="font-size: 22px;"></i>
+                    </button>
+                </div>
+                <div id="first"><a href="user_main">返回首页</a></div>
+            </div>
+        </div>
+        <div id="centerTab">
+            <div id="topNav" class="tab">
+                <ul id="tab">
+                    <li index="0" class="current">综合</li>
+                    <li index="1">科学</li>
+                    <li index="2">体育</li>
+                    <li index="3">军事</li>
+                    <li index="4">游戏</li>
+                    <li index="5">娱乐</li>
+                    <li index="6">图片</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="content">
+        <div id="contentTwo">
+            <div id="contentLeft">
+                <div id=leftContent>
+
+                </div>
+                <div id="paging">
+                    <button id="ago">上一页</button>
+                    <div id="btn-page">
+
+                    </div>
+                    <button id="next" style="margin-left: 10px">下一页</button>
+                    <a id="aa" href="javascript:;" style="background-color:#1890FF;color: white;display: none">1</a>
+                    <input value="1" style="width: 20px;display: none" id="page"/>
+                </div>
+
+            </div>
+            <div id="hot">
+                <div class="hotnew-top">
+                    <div id="hotnew-title"><i class="icon ion-fireball"></i>&nbsp头条热榜</div>
+                    <div id="change"><i class="icon ion-refresh"></i>换一换</div>
+                </div>
+                <ul class="showBox">
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="scrollTop">
+        <a id="arrow">
+            <i class="icon ion-arrow-up-a"></i>
+        </a>
+        <a style="font-size: 10px;display: block;margin:1px 5px;">返回顶部</a>
+    </div>
+</div>
+
+</div>
+</body>
+<script src="js/lsw/search.js"></script>
+<script src="js/lsw/searchFuzzy.js"></script>
+<script>
+</script>
+</html>

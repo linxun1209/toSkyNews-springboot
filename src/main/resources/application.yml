@@ -1,0 +1,87 @@
+
+spring:
+  tengxun:
+    secretId: AKIDWrvkIYXGjwsXw83h5C1Zrsc4HDsGNEp8
+    secretKey: 3qMbZGgphIdhU0FDuJSKuDF1WkgLksjJ
+    region: ap-shanghai
+    bucketName: linxun-1310915694
+    path: https://linxun-1310915694.cos.ap-shanghai.myqcloud.com
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://110.40.210.213:3306/tosky?useSSL=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useSSL=false
+      username: root
+      password: Ysy20031002
+#        #是否加密
+#        decrypt: true
+#        driver-class-name: com.kingbase8.Driver
+
+
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.skynews.pojo
+#  configuration:
+#    map-underscore-to-camel-case: true
+server:
+  port: 8080
+  tomcat:
+    max-connections: 10000
+  multipart:
+    # 设置 上传文件的大小
+    max-file-size: 10MB
+    # 设置 整个请求的大小
+    max-request-size: 15MB
+  servlet:
+    context-path: /ToSkyNews_war_exploded
+  resources:
+    #指定静态资源路径，默认为classpath:[/META-INF/resources/,/resources/, /static/, /public/]以及context:/
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/}
+  #热部署--静态资源立即生效
+  thymeleaf:
+    cache: false
+    encoding: UTF-8
+    mode: LEGACYHTML5
+    prefix: classpath:/templates/
+    suffix: .html
+    check-template-location: true
+  #热部署生效
+  devtools:
+    restart:
+      enabled: true
+  jackson:
+    #指定日期格式，比如yyyy-MM-dd HH:mm:ss
+    date-format: yyyy-MM-dd HH:mm:ss
+    #指定日期格式化时区
+    time-zone: GMT+8
+thymeleaf:
+  cache: false # 关闭页面缓存
+  encoding: UTF-8 # 模板编码
+  prefix: classpath:/templates/  # 页面映射路径
+  suffix: .html # 构建URL时附加到查看名称的后缀
+  mode: HTML5 # 模板模式
+# 日志配置
+logging:
+  level:
+    com.example: info
+    org.springframework: warn
+
+tengxun:
+    secretId: AKIDWrvkIYXGjwsXw83h5C1Zrsc4HDsGNEp8
+    secretKey: 3qMbZGgphIdhU0FDuJSKuDF1WkgLksjJ
+    region: ap-shanghai
+    bucketName: linxun-1310915694
+    path: https://linxun-1310915694.cos.ap-shanghai.myqcloud.com
+mail:
+    username: 3056726345@qq.com
+    password: wuvqzvgwuplvddcg
+    host: smtp.qq.com
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
+

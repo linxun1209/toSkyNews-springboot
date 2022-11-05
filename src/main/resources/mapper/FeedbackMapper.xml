@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.FeedbackMapper">
+
+    <!-- 注意写好功能后，把mapper绑定到mybatis-config.xml中去 -->
+
+    <!--添加反馈-->
+    <insert id="addFeedback" parameterType="Feedback">
+        insert into tosky.feedback(kind,contact,opinion,userID,times)
+        values(#{kind},#{contact},#{opinion},#{userID},#{times})
+    </insert>
+
+    <!--管理员查询所有反馈-->
+    <select id="queryAllFeedback" resultType="Feedback">
+        select * from tosky.feedback
+        <if test="column!=null and total!=null">
+        limit #{column},#{total}
+        </if>
+    </select>
+
+    <!--查询所有反馈(返回一共多少条反馈)-->
+    <select id="queryFeedbackCount" resultType="int">
+        select count(*) from tosky.feedback
+    </select>
+
+    <!--展示个人反馈-->
+    <select id="queryUserFeedback" resultType="Feedback">
+        select * from tosky.feedback
+        <if test="userID !=null">
+            where userID=#{userID}
+        </if>
+    </select>
+
+    <!--管理员针对用户的反馈作出反馈-->
+    <update id="addManagerFeedback" >
+        update tosky.feedback set managerContent=#{managerContent}
+        <if test="feedbackID!=null">
+            where feedbackID=#{feedbackID}
+        </if>
+    </update>
+
+    <!--管理员反馈->管理员反馈managerOr-》1-->
+    <update id="updateManagerToOne" parameterType="int">
+      update tosky.feedback
+      set managerOr=1
+      <if test="feedbackID!=null">
+          where feedbackID=#{feedbackID}
+      </if>
+   </update>
+
+    <!--管理员反馈->用户未接收到反馈userOr-》-1-->
+    <update id="updateManagerToToOne" parameterType="int">
+      update tosky.feedback
+      set userOr=-1
+      <if test="feedbackID !=null">
+          where
+      feedbackID=#{feedbackID}
+      </if>
+   </update>
+
+    <!--用户查看管理员反馈-》用户接收到反馈userOr-》1-->
+    <update id="updateUserToOne" parameterType="int">
+      update tosky.feedback
+      set userOr=1
+      <if test="feedbackID !=null">
+          where
+      feedbackID=#{feedbackID}
+      </if>
+   </update>
+
+    <!--用户是否已经查看管理员回复-->
+    <select id="queryManagerToUser" resultType="Feedback">
+        select * from tosky.feedback where userOr = 1
+        <if test="feedbackID !=null">
+        and feedbackID=#{feedbackID}
+        </if>
+    </select>
+
+    <!--删除指定反馈-->
+    <delete id="deleteFeedback" parameterType="int">
+        delete from tosky.feedback where feedbackID=#{feedbackID}
+    </delete>
+
+    <!--查询所有管理员未回复的反馈-->
+    <select id="queryManagerOrFeedback" resultType="Feedback">
+        select * from tosky.feedback where managerOr=0
+    </select>
+</mapper>

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <title>用户反馈</title>
+    <script src="js/jquery-3.6.0.js"></script>
+</head>
+<style>
+    .main{
+        border: #0771f3 1.5px solid;
+        position: relative;
+        border-radius: 6px;
+        box-shadow: #b1aeae 0px 0px 6px;
+        max-width: 1100px;
+        min-width: 500px;
+        padding: 20px;
+        min-height: 550px;
+        margin: 20px auto;
+        background-color: aliceblue;
+    }
+    .message{
+        border-radius: 15px;
+        max-width: 1100px;
+        padding: 10px;
+        height: 50px;
+        background-color: #f3f3f3;
+    }
+    span{
+        color: #0771f3;
+        margin-right: 20px;
+    }
+    .type{
+        margin-top: 5px;
+        height: 20px;
+
+    }
+    #type{
+        border: #64a6f7 1px solid;
+        font-size: 14px;
+        height: 18px;
+        padding: 1px 5px;
+        border-radius: 6px;
+    }
+    #in{
+        max-width: 1100px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #f3f3f3;
+    }
+    #reply{
+        max-width: 1100px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #f3f3f3;
+    }
+    #posttitle{
+        max-width: 1100px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #f3f3f3;
+    }
+    .mtitle{
+        height: 20px;
+        padding: 15px 0;
+        line-height: 20px;
+        color: #0771f3;
+        font-size: 18px;
+    }
+    #ttt{
+        border: #64a6f7 1px solid;
+        font-size: 14px;
+        height: 18px;
+        padding: 1px 5px;
+        border-radius: 6px;
+    }
+    #back{
+        border: #1a7cf4 1px solid;
+        font-size: 14px;
+        position: absolute;
+        right: 50px;
+        cursor: pointer;
+        background-color: #64a6f7;
+        color: white;
+        padding:5px;
+        border-radius: 6px;
+    }
+    #back:hover{
+        background-color: #1a7cf4;
+    }
+</style>
+<body>
+    <div class="main">
+        <button id="back" onclick="back()"><i class="fa fa-reply-all" aria-hidden="true"></i></button>
+        <h2>用户反馈</h2>
+        <div class="message">
+             <div>
+                <i class="fa fa-clock-o" aria-hidden="true">举报时间：</i><span id="time">2021.12.12</span>
+             </div>
+             <div class="type">
+                 类型：<span id="type">科技</span>
+                 文章状态：<span id="ttt">批准</span>
+             </div>
+        </div>
+        <div class="mtitle">举报内容：</div>
+        <div id="in">
+            水电费水电费水电费大赛水电费收到发生的发水电费是
+            水电费水电费水电费大赛水电费收到发生的发水电费是
+            
+        </div>
+        <div class="mtitle">举报文章标题：</div>
+        <div id="posttitle">
+
+        </div>
+        <div class="mtitle">举报文章内容：</div>
+        <div id="reply">
+
+        </div>
+    </div>
+</body>
+<script>
+    var us=document.getElementById("us");
+    var time=document.getElementById("time");
+    var type=document.getElementById("type");
+    var main=document.getElementById("in");
+    var reply=document.getElementById("reply");
+    var ttt=document.getElementById("ttt");
+    var postid= sessionStorage.getItem('r_postID');
+    var times=sessionStorage.getItem('r_times');
+    var status=sessionStorage.getItem('r_status');
+    var opinion=sessionStorage.getItem('r_opinion');
+    var kind=sessionStorage.getItem('r_kind');
+    time.innerHTML=times;
+    type.innerHTML=kind;
+    ttt.innerHTML=status;
+    main.innerHTML=opinion;
+    $.post('http://localhost:8080/ToSkyNews_war_exploded/posts/queryPostsByID',
+    {'postsID':postid},
+        function (date) {
+            console.log(date);
+            document.getElementById("posttitle").innerHTML=date.postsName;
+            reply.innerHTML=date.content;
+        })
+    function back(){
+        window.history.go(-1);
+    }
+    // reply.innerHTML=managerContent;
+</script>
+</html>

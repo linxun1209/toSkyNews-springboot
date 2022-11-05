@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>错误页面</title>
+    <style>
+        .page{
+            width: 400px;
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            color: #e85b6a;
+            font-size: 30px;
+        }
+        .box1{
+            width: 400px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            font-size: 30px;
+            color: #80eb7a;
+        }
+        div{
+            margin:auto;
+        }
+        body {
+            background:url("https://linxun-1310915694.cos.ap-shanghai.myqcloud.com/toSkyNews/20220504203041_yang.jpg") no-repeat center center;
+            background-size:cover;
+            background-attachment:fixed;
+        }
+
+
+    </style>
+</head>
+<body>
+<div class="box1">哎呀～出错了，请返回重试</div>
+<div class="page" th="*{message}">错误信息</div>
+
+
+</body>
+</html>

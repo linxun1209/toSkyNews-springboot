@@ -1,0 +1,117 @@
+#feedbackfade{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0px;
+    z-index: 101;
+    display: none;
+    background-color: rgba($color: #000000, $alpha: 0.1);
+    opacity: 0;
+    #alert{
+        width: 280px;
+        height: 180px;
+        z-index: 102;
+        margin: 0 auto;
+        position: relative;
+        top: -250px;
+        box-shadow: 0 10px 30px rgb(130, 130, 130);
+        background-color: white;
+        border-radius: 8px;
+        overflow: hidden;
+        div{
+            font-size: 16px;
+            line-height: 19px;
+            width: 180px;
+            height: 120px;
+            padding: 10px;
+        }
+        a{
+            position: absolute;
+            bottom: 0;
+            height: 40px;
+            display: block;
+            width: 100%;
+            line-height: 40px;
+            color: white;
+            font-size: 18px;
+            font-weight: 600;
+            text-align: center;
+            background-color: #2f70c5;
+            transition: all .4s;
+        }
+    }
+}
+#all_top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 35px;
+    padding: 5px 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 1px 3px #888888;
+    z-index: 100;
+    .top_find {
+        margin-left: 30px;
+        border-radius: 15px;
+        width: 360px;
+        height: 35px;
+        display: flex;
+
+        input {
+            padding-left: 10px;
+            width: 260px;
+            border-radius: 10px 0px 0px 10px;
+            border: 1px solid #1682e6;
+            outline: none;
+        }
+
+        a {
+            border-radius: 0 10px 10px 0;
+            display: block;
+            height: 21px;
+            width: 50px;
+            color: white;
+            background-color: #1682e6;
+            padding: 7px 10px;
+        }
+    }
+    .column_sort {
+        width: 700px;
+        height: 35px;
+        display: flex;
+        justify-content: space-around;
+    
+        a {
+            display: block;
+            border-radius: 5px;
+            height: 30px;
+            line-height: 30px;
+            padding: 2.5px 10px;
+            color: black;
+            font-size: 20px;
+    
+            &:hover {
+                background-color: gainsboro;
+                color: #067ae6;
+            }
+        }
+    }
+    #back_history{
+        border: #1a7cf4 1px solid;
+        font-size: 14px;
+        width: 30px;
+        margin-top: 3px;
+        margin-left: 20px;
+        height: 30px;
+        cursor: pointer;
+        background-color: #64a6f7;
+        color: #1e1e1e;
+        padding: 5px;
+        border-radius: 6px;
+        &:hover{
+            background-color: #2989ff;
+            color: white;
+        }
+    }
+}

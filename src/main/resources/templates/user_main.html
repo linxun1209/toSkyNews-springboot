@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来头条</title>
+    <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/wzz/user_main.min.css" type="text/css">
+    <link rel="stylesheet" href="css/wzz/new.min.css" type="text/css">
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+
+<body>
+    <!-- alert()方法 -->
+    <div id="feedbackfade">
+        <div id="alert">
+            <div id="alerttext">这是提示内容</div>
+            <a id="alertfade" href="javascript:;">确定</a>
+        </div>
+    </div>
+    <!-- alert()方法 -->
+    <!-- 反馈栏目 -->
+    <div id="feedback">
+        <div id="feedback_main">
+            <div class="feedback_main_top">
+                反馈栏目
+                <a href="javascript:;" onclick="Feedback_down()">×</a>
+            </div>
+            <div class="feedback_link">
+                <i>*</i>
+                反馈类型：
+            </div>
+            <div class="feedback_link">
+                <input type="radio" class="feedback_sex" name="feedback_type" value="优化推荐">优化推荐
+                <input type="radio" class="feedback_sex" name="feedback_type" value="bug报备">bug报备
+                <input type="radio" class="feedback_sex" name="feedback_type" value="其他">其他
+            </div>
+            <div class="feedback_link">
+                <i>*</i>
+                联系方式：
+            </div>
+            <input type="text" class="feedback_send" placeholder="邮箱/电话号">
+            <div class="feedback_link">
+                <i>*</i>
+                您的反馈：
+            </div>
+            <textarea type="text" class="feedback_text" placeholder="请填写反馈内容"></textarea>
+            <div style="font-weight: 600;" class="feedback_link">
+                <i>*</i>
+                欢迎您的反馈!
+                <i>*</i>
+            </div>
+            <button id="tofeedback" class="havaland">发送反馈</button>
+        </div>
+    </div>
+    <!-- 反馈栏目 -->
+    <!-- 功能框 -->
+    <div class="tool_item">
+        <a class="tool_item_a" href=""><i class="fa fa-refresh" aria-hidden="true"></i> 刷新</a>
+        <a class="tool_item_a" onclick="Feedback_show()" href="javascript:;"><i class="fa fa-pencil-square-o"
+                style="font-size: 20px;" aria-hidden="true"></i>反馈</a>
+        <a class="tool_item_a" onclick="Topfun()" href="javascript:;"><i class="fa fa-arrow-up" style="font-size: 18px;"
+                aria-hidden="true"></i>置顶</a>
+    </div>
+    <!-- 功能框 -->
+    <!-- 顶部 -->
+    <div id="all_top">
+        <div class="container2">
+            <div class="column_sort">
+                <a href="javascript:;">综合</a>
+                <a href="javascript:;">科学</a>
+                <a href="javascript:;">体育</a>
+                <a href="javascript:;">军事</a>
+                <a href="javascript:;">游戏</a>
+                <a href="javascript:;">娱乐</a>
+                <a href="javascript:;">其他</a>
+            </div>
+            <div class="top_find">
+                <input type="text" class="food_find_input" placeholder=" 请输入您要寻找的文章与描述">
+                <a href="javascript:;" class="food_find_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+            </div>
+            <button id="back_history" onclick="window.history.go(-1);">
+                <i class="fa fa-reply-all" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <!-- 顶部 -->
+    <!-- 首页顶部 -->
+    <div id="main_top">
+        <video id="videoback" src="img/wzz/topback.mp4" loop="loop" autoplay="autoplay"></video>
+        <div id="top">
+            <a id="top_about" href="javascript:;">关于项目</a>
+            <div id="he-plugin-simple"></div>
+            <!-- <a id="weather" href="javascript:;">
+                <img class="weather_img" style="padding-right: 10px;width: 28px;height: 28px;"
+                    src="img/wzz/qing.png" alt="">
+                <span>天气</span>
+            </a> -->
+            <!-- <a id="tousers" href="users-land" target="_blank">管理员登录</a> -->
+            <a class="top_land top_left" href="javascript:;">
+                登录
+            </a>
+            <a id="top_header" class="top_left" href="javascript:;">
+                <div id="top_img_header"><img class="user_img" src="https://linxun-1310915694.cos.ap-shanghai.myqcloud.com/toSkyNews/20220429192703_none.jpg" alt=""></div>
+                <span>用户昵称</span>
+            </a>
+            <a id="top_work" class="top_left" href="javascript:;">
+                <img src="img/wzz/addwork.png" alt="">
+                发布作品
+            </a>
+            <a id="top_message" class="top_left" href="javascript:;">
+                您有新的消息
+            </a>
+            <div id="publish">
+                <a id="top_works" href="javascript:;"><i class="fa fa-file-text-o" aria-hidden="true"></i>发布文章</a>
+                <a id="top_p" href="javascript:;"><i class="fa fa-picture-o" aria-hidden="true"></i>发布图片</a>
+                <a href="javascript:;" onclick=" developing()"><i class="fa fa-video-camera" aria-hidden="true"></i>发布视频</a>
+                <a href="javascript:;" onclick=" developing()"><i class="fa fa-pencil-square-o " aria-hidden="true"></i>发布问答</a>
+            </div>
+            <div id="head_show">
+                <a onclick="tomymain()" href="javascript:;">个人主页</a>
+                <a onclick="tocreate()" href="javascript:;">创作文章</a>
+                <a href="mymessage">信息空间</a>
+                <a onclick="signoutland()" href="javascript:;">退出登录</a>
+            </div>
+            <!-- <div id="weather_show">
+                <a onchange="getweather()" class="location" href="javascript:;">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    <select class="location_chance">
+                        <option class="loc" value="新乡">新乡</option>
+                        <option class="loc" value="北京">北京</option>
+                        <option class="loc" value="上海">上海</option>
+                        <option class="loc" value="重庆">重庆</option>
+                        <option class="loc" value="郑州">郑州</option>
+                        <option class="loc" value="南阳">南阳</option>
+                        <option class="loc" value="深圳">深圳</option>
+                        <option class="loc" value="广州">广州</option>
+                    </select>
+                </a>
+                <div class="weather_get">
+                    <div class="tem">
+                        <span class="tem_max">26</span>C~
+                        <span class="tem_min">6</span>C
+                        <span class="wea">晴</span>
+                    </div>
+                    <div class="wind-air">
+                        <div class="wind">风力等级:<span>6</span></div>
+                        <div class="air">空气质量：<span>6</span></div>
+                    </div>
+                    <img class="weather_img" src="static/img/wzz/header.jpg" alt="">
+                    <div class="date_time">
+                        更新时间:<span>20:55</span>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 天气栏目 -->
+        </div>
+        <a id="top_title" href="#">未来头条</a>
+        <div class="top_find">
+            <input type="text" class="main_find_input" placeholder=" 请输入您要寻找的文章与描述">
+            <a href="javascript:;" class="main_find_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+        </div>
+        <div id="top_fire">
+            <i style="color: #F04142;" class="fa fa-fire" aria-hidden="true"></i>
+            <a href="javascript:;" class="top_fire_a">教育部谈2022年中考教育部谈2022年中考</a>
+            <a href="javascript:;" class="top_fire_a">教育部谈2022年中考</a>
+            <a href="javascript:;" class="top_fire_a">教育部谈2022年中考</a>
+            <span class="fireid"></span><span class="fireid"></span><span class="fireid"></span>
+        </div>
+    </div>
+    <!-- 首页顶部 -->
+    <div class="main container">
+        <div class="main_left">
+            <div class="column_sort">
+                <a href="javascript:;">综合</a>
+                <a href="javascript:;">科学</a>
+                <a href="javascript:;">体育</a>
+                <a href="javascript:;">军事</a>
+                <a href="javascript:;">游戏</a>
+                <a href="javascript:;">娱乐</a>
+                <a href="javascript:;">其他</a>
+            </div>
+            <div class="column">
+                <a class="column_news" onclick="into()" href="javascript:;">
+                    <div class="column_news_title">这是文章的标题</div>
+                    <div class="column_news_Acommit">这是文章内容这是文章内容这是文章内容
+                    </div>
+                    <div class="column_news_information">
+                        <span>作者</span>
+                        <span>评论</span>
+                        <span>发布时间</span>
+                        <span style="display: none">文章id</span>
+                    </div>
+                </a>
+                <a class="column_news" href="javascript:;">
+                    <div class="column_news_title">这是文章的标题</div>
+                    <div class="column_news_Acommit">这是文章内容这是文章内容这是文章内容
+                    </div>
+                    <div class="column_news_information">
+                        <span>作者</span>
+                        <span>评论</span>
+                        <span>发布时间</span>
+                    </div>
+                </a>
+                <a class="column_news" href="javascript:;">
+                    <div class="column_news_title">这是文章的标题</div>
+                    <div class="column_news_Acommit">这是文章内容这是文章内容这是文章内容
+                    </div>
+                    <div class="column_news_information">
+                        <span>作者</span>
+                        <span>评论</span>
+                        <span>发布时间</span>
+                    </div>
+                </a>    
+                <a class="column_news" href="recomments" target="_blank">
+                    <div class="column_news_titles">${date[n].postsName}</div>
+                    <div class="column_news_Acommits">${date[n].contentA}</div>
+                    <div class="column_news_information">
+                        <span>${date[n].browse}浏览</span>
+                        <span>${date[n].alike}点赞</span>
+                        <span>${date[n].picture}</span>
+                        <span style="display: none">${date[n].postsID}</span>
+                    </div>
+                    <div class="column_img" style="background-image: url(https://linxun-1310915694.cos.ap-shanghai.myqcloud.com/toSkyNews/20220429192703_none.jpg)"></div>
+                </a>
+            </div>
+            <div id="lookmore">
+                正在努力加载更多
+                <div class="loading">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+            <div id="lookend">
+                已经是全部内容了哦
+                <i class="fa fa-sun-o" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="main_right">
+            <div class="id_card">
+                <!-- 未登录的信息框 -->
+                <div class="small_cade">
+                    <a class="id_card_toland" href="javascript:;">
+                        <div>请先登录账号</div>
+                        <button onclick="toland()">
+                            <i class="fa fa-plus-square-o" aria-hidden="true"></i>点击登录
+                        </button>
+                    </a>
+                </div>
+                <!-- 未登录的信息框 -->
+                <!-- 登录的信息框 -->
+                <div class="small_cade" style="display: none;">
+                    <a class="id_card_top" href="javascript:;">
+                        <img class="user_img" src="https://linxun-1310915694.cos.ap-shanghai.myqcloud.com/toSkyNews/20220429192703_none.jpg" alt="">
+                        <div id="user_name">用户名</div><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></br>
+                        <div class="id_card_message">
+                            <div class="id_card_s">
+                                <div class="id_card_get">0</div>
+                                <div class="id_card_ss">获赞</div>
+                            </div>
+                            <div class="id_card_s">
+                                <div class="id_card_get">0</div>
+                                <div class="id_card_ss">粉丝</div>
+                            </div>
+                            <div class="id_card_s">
+                                <div class="id_card_get">0</div>
+                                <div class="id_card_ss">关注</div>
+                            </div>
+                        </div>
+                        <button class="id_card_create">
+                            <div id="redspot"></div>
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>信息空间
+                        </button>
+                    </a>
+                </div>
+                <!-- 登录的信息框 -->
+            </div>
+            <!-- lsw的热榜 -->
+            <div id="hot">
+                <div class="hotnew-top">
+                    <div id="hotnew-title"><i class="icon ion-fireball"></i>&nbsp头条热榜</div>
+                    <div id="change"><i class="icon ion-refresh"></i>换一换</div>
+                </div>
+                <ul class="showBox">
+                </ul>
+            </div>
+            <!-- lsw的热榜 -->
+        </div>
+    </div>
+</body>
+<script src="js/jquery-3.6.0.js"></script>
+<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
+<script src="js/sweetalert-dev.js"></script>
+<script src="js/wzz/fire.js" type="text/javascript" charset="utf-8"></script>
+<!-- <script src="https://webapi.amap.com/maps?v=2.0&key=申请的key&plugin=AMap.Transfer"></script> -->
+<script src="js/wzz/weather.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script>
+<script src="js/wzz/user-main.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/wzz/feedback.js" type="text/javascript" charset="utf-8"></script>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="css/lsw/picture.css">
+    <script src="js/lsw/jquery.min.js"></script>
+</head>
+
+<body>
+<div id="appNav">
+    <div id="touxiang" onclick="goUser1()">
+        <div class="user_img"></div>
+        <span id="user_name">用户昵称</span>
+    </div>
+    <div id="appNav_right" onclick="goUser()">返回用户主页</div>
+</div>
+<div id="app">
+    <div id="container_view">
+        <div id="leftNav">
+            <ul id="leftNav_li">
+                <li index="0" id="one">图片素材</li>
+                <li index="1" id="ppp">图片管理</li>
+            </ul>
+        </div>
+        <div id="right_content" class="item">
+            <div id="right_top">
+                <button type="button" id="fileBtn">上传图片</button>
+            </div>
+            <div id="rightCenter">
+                <div class="picDiv">
+                    <div class="addImages">
+                        <input type="file" class="file" id="file" name="image" multiple="multiple" accept="image/png, image/jpeg, image/gif, image/jpg">
+                        <div class="text-detail">
+                            <span>+</span>
+                            <p>点击上传</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="right_content2" class="item">
+            <div id="content2Nav">
+                <ul id="status">
+                    <li>全部</li>
+                    <li>已审核</li>
+                    <li>未审核</li>
+                </ul>
+            </div>
+            <div id="contentNavRight">
+                <input type="text" class="input_text" id="input_text" name="word" placeholder="请输入信息" />
+                <button type="submit" class="input_sub" onclick="search();">搜索</button>
+            </div>
+            <div id="rightCenter2"></div>
+            <div id="pictureNum"></div>
+            <div id="pageBig">
+                <button id="ago">上一页</button>
+                <a id="aa" href="javascript:;">1</a>
+                <button id="next">下一页</button>
+                <span>跳转至&nbsp;<input oninput="pictureAllNum()" value="1" style="width: 20px;" id="page"/>&nbsp;页</span>
+            </div>
+            <div id="pageBig1">
+                <button id="ago1">上一页</button>
+                <a id="aa1" href="javascript:;">1</a>
+                <button id="next1">下一页</button>
+                <span>跳转至&nbsp;<input oninput="pictureAllNum()" value="1" style="width: 20px;" id="page1"/>&nbsp;页</span>
+            </div>
+
+            <div id="re_status">返回状态查找...</div>
+        </div>
+    </div>
+    <div id="label-silder-shadow">
+        <div id="successTip">
+            <div id="tckTip">提示</div>
+            <div id="tip" style="margin-left: 110px">图片上传成功，请耐心等待审核</div>
+            <button id="sure">确定</button>
+        </div>
+    </div>
+    <div class="toast-error">
+        <span>请输入合理的页数</span>
+    </div>
+
+
+</body>
+<script src="js/lsw/picture.js"></script>
+<script src="js/lsw/pictureFuzzy.js"></script>
+</html>

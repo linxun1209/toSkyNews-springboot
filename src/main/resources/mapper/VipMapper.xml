@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.VipMapper">
+
+    <!-- 注意写好功能后，把mapper绑定到mybatis-config.xml中去 -->
+
+    <!--成为vip-->
+    <insert id="addVip" parameterType="Vip">
+        insert into tosky.vip(userID,times)
+        values(#{userID},#{times})
+    </insert>
+
+    <!--展示所有的vip-->
+    <select id="queryAllVip" resultType="Vip">
+        select * from tosky.vip
+    </select>
+
+    <!--删除指定反馈-->
+    <delete id="deleteVip" parameterType="int">
+        delete from tosky.vip
+            where userID=#{userID}
+
+    </delete>
+
+    <!--全局搜索帖子+模糊查询+分页-->
+    <select id="overAllPosts" resultType="Posts">
+        select * from tosky.posts where status=1
+        <if test="thing!=null">
+        and postsName like concat('%',#{thing},'%')
+        </if>
+    </select>
+
+    <!--全局搜索用户+模糊查询+分页-->
+    <select id="overAllUser" resultType="User">
+        select * from tosky.user where
+        <if test="thing!=null">
+        username like concat('%',#{thing},'%')
+        </if>
+    </select>
+
+    <!--全局搜索图片库+模糊查询+分页-->
+    <select id="overAllPicture" resultType="Picture">
+        select * from tosky.picture where status=1
+        <if test="thing!=null">
+        and userDepiction
+        like concat('%',#{thing},'%')
+        </if>
+    </select>
+
+    <!--判断该用户是否为vip用户（即根据用户id查询表中相应数据，判断是否有空值）-->
+    <select id="judgeVip" resultType="Vip">
+        select * from tosky.vip where
+        <if test="userID!=null">
+        userID=#{userID}
+        </if>
+    </select>
+
+<!--    test-->
+    <select id="test" resultType="Vip">
+        select * from tosky.vip where 1=1
+        <if test="userID!=null and userID!=''">
+        and userID=#{userID}
+        </if>
+        <if test="times!=null and times!=''">
+        and times=#{times}
+        </if>
+    </select>
+
+    <!--返回除了status为-2的文章的个数-->
+    <select id="queryStatusNoTwo" resultType="int">
+        select count(*) from tosky.posts where status &lt;&gt; -2
+    </select>
+
+    <!--返回status为1的文章（n条）-->
+    <select id="queryStatusOneN" resultType="Posts">
+        	select * from tosky.posts where status=1 order by postsID desc limit #{count}
+    </select>
+
+    <!--模糊查询某个用户的草稿箱信息（分页）-->
+    <select id="queryVaguePagesYXY" resultType="Posts">
+        	select * from tosky.posts
+        	<where>
+        	status=-2
+        	<if test="reside!=null">
+        	and reside=#{reside}
+            </if>
+            <if test="thing!=null">
+            and postsName like concat('%',#{thing},'%')
+        	order by postsID desc
+            </if>
+            <if test="page!=null and num!=null">
+        	limit #{page},#{num}
+            </if>
+            </where>
+    </select>
+
+    <!--{count}模糊查询某个用户的草稿箱信息（分页）-->
+    <select id="queryVaguePagesYXYCount" resultType="int">
+        select count(*) from tosky.posts
+        <where>
+         status=-2
+        <if test="reside!=null">
+        and reside=#{reside}
+        </if>
+        <if test="thing">
+        and postsName like concat('%',#{thing},'%')
+        </if>
+        </where>
+    </select>
+</mapper>

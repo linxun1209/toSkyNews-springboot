@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="static/img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <title>用户反馈</title>
+</head>
+<style>
+    .main{
+        border: #0771f3 1.5px solid;
+        border-radius: 6px;
+        box-shadow: #b1aeae 0px 0px 6px;
+        max-width: 1100px;
+        min-width: 500px;
+        padding: 20px;
+        min-height: 550px;
+        margin: 20px auto;
+        background-color: aliceblue;
+    }
+    .message{
+        border-radius: 15px;
+        max-width: 1100px;
+        padding: 10px;
+        height: 50px;
+        background-color: #f3f3f3;
+    }
+    span{
+        color: #0771f3;
+        margin-right: 20px;
+    }
+    .type{
+        margin-top: 5px;
+        height: 20px;
+
+    }
+    #type{
+        border: #64a6f7 1px solid;
+        font-size: 14px;
+        height: 18px;
+        padding: 1px 5px;
+        border-radius: 6px;
+    }
+    #in{
+        max-width: 1100px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #f3f3f3;
+    }
+    #reply{
+        max-width: 1100px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #f3f3f3;
+    }
+    .mtitle{
+        height: 20px;
+        padding: 15px 0;
+        line-height: 20px;
+        color: #0771f3;
+        font-size: 18px;
+    }
+</style>
+<body>
+    <div class="main">
+        <h2>用户反馈</h2>
+        <div class="message">
+             <div>
+                <i class="fa fa-address-card-o" aria-hidden="true">反馈用户：</i><span id="us">id</span>
+                <i class="fa fa-clock-o" aria-hidden="true">反馈时间：</i><span id="time">2021.12.12</span>
+             </div>
+             <div class="type">
+                 反馈类型：<span id="type">科技</span>
+             </div>
+        </div>
+        <div class="mtitle">反馈内容：</div>
+        <div id="in">
+            水电费水电费水电费大赛水电费收到发生的发水电费是
+            水电费水电费水电费大赛水电费收到发生的发水电费是
+            
+        </div>
+        <div class="mtitle">回复内容：</div>
+        <div id="reply">
+
+        </div>
+    </div>
+</body>
+<script>
+    var us=document.getElementById("us");
+    var time=document.getElementById("time");
+    var type=document.getElementById("type");
+    var main=document.getElementById("in");
+    var reply=document.getElementById("reply");
+    var feedbackID=localStorage.getItem("f_feedbackID");
+    var times= localStorage.getItem("f_times");
+    var ftype=localStorage.getItem("f_type");
+    var kind=localStorage.getItem("f_kind");
+    var opinion=localStorage.getItem("f_opinion");
+    var managerContent=localStorage.getItem("f_managerContent");
+    time.innerHTML=times;
+    type.innerHTML=kind;
+    main.innerHTML=opinion;
+    reply.innerHTML=managerContent;
+</script>
+</html>

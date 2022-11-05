@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.FocusMapper">
+
+    <!-- 注意写好功能后，把mapper绑定到mybatis-config.xml中去 -->
+
+    <!--关注某用户-->
+    <insert id="addFocus" parameterType="Focus">
+        insert into tosky.focus(focusID,fansID)
+        values(#{focusID},#{fansID})
+    </insert>
+
+    <!--取消关注-->
+    <delete id="deleteFocus" parameterType="Focus">
+        delete from tosky.focus where focusID=#{focusID} and fansID=#{fansID}
+    </delete>
+
+    <!--查询某个用户所有粉丝-->
+    <select id="queryAllFans" resultType="Focus">
+        select * from tosky.focus
+        where
+        <if test="focusID !=null">
+        focusID=#{focusID} order by autoID desc
+        </if>
+    </select>
+
+    <!--查询某个用户所有关注-->
+    <select id="queryAllFocus" resultType="Focus">
+        select * from tosky.focus where
+        <if test="fansID !=null">
+        fansID=#{fansID} order by autoID desc
+        </if>
+    </select>
+
+    <!--判断该用户是否已经关注过另一个用户-->
+    <select id="queryFocus" resultType="Focus">
+        select * from tosky.focus
+        <where>
+        <if test="focusID !=null">
+        focusID=#{focusID}
+        </if>
+        <if test="fansID !=null">
+        and fansID=#{fansID}
+        </if>
+        </where>
+    </select>
+
+    <!--根据用户id获取用户的粉丝数-->
+    <select id="querySumFans" resultType="int">
+        select count(*) from focus where
+        <if test="focusID !=null">
+        focusID=#{focusID}
+        </if>
+    </select>
+
+<!--    ******************* resultType ********************-->
+    <!--根据用户id获取用户的关注数-->
+    <select id="querySumFocus" resultType="int">
+        select count(*) from tosky.focus
+        <if test="fansID !=null">
+            where fansID=#{fansID}
+        </if>
+    </select>
+
+    <!--查询某个用户所有粉丝（分页查询）-->
+    <select id="queryAllFansPage" resultType="Focus">
+        select * from tosky.focus where
+        <if test="focusID !=null">
+        focusID=#{focusID} limit #{num},8
+        </if>
+    </select>
+
+    <!--查询某个用户所有关注（分页查询）-->
+    <select id="queryAllFocusPage" resultType="Focus">
+        select * from tosky.focus where
+        <if test="fansID !=null and num!=null">
+        fansID=#{fansID} limit #{num},8
+        </if>
+    </select>
+
+</mapper>

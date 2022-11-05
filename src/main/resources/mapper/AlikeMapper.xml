@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.AlikeMapper">
+
+
+    <!-- 注意写好功能后，把mapper绑定到mybatis-config.xml中去 -->
+
+    <!--用户点赞-->
+    <update id="setAlike" parameterType="int">
+      update tosky.posts
+      set alike=alike + 1
+        <if test="postsID!=null">
+            where
+        postsID = #{postsID}
+        </if>
+   </update>
+
+    <!--用户点赞（前端输入用户id，帖子id）-->
+    <insert id="setAlikeTable" parameterType="Alike">
+      insert into tosky.alike(postsID,userID)
+      values (#{postsID}, #{userID})
+   </insert>
+
+    <!--用户取消点赞-->
+    <update id="deleteAlike" parameterType="int">
+      update tosky.posts
+      set alike=alike - 1
+      <if test="postsID !=null">
+      where postsID = #{postsID}
+      </if>
+   </update>
+
+    <!--用户取消赞(删除表中的点赞记录)-->
+    <delete id="deleteAlikeTable" parameterType="Alike">
+      delete from tosky.alike
+      where postsID=#{postsID} and userID=#{userID}
+   </delete>
+
+    <!--判断该用户是否已经点赞过此帖子-->
+    <select id="queryAlike" resultType="Alike">
+        SELECT * from tosky.alike
+        <where>
+        <if test="postsID !=null">
+         postsID=#{postsID}
+        </if>
+            <if test="userID !=null">
+         and userID=#{userID}
+            </if>
+        </where>
+    </select>
+
+    <!--用户点赞（前端输入用户id，帖子id）之后在messages中增加一条数据表示此用户点赞的记录-->
+    <insert id="setMessages" parameterType="Messages">
+        insert into tosky.messages(reside,postsName,userID,authorID,times,postsID)
+      values (#{reside}, #{postsName},#{userID},#{authorID},#{times},#{postsID})
+    </insert>
+
+    <!--当用户查看此信息之后此信息状态改变-->
+    <update id="updateMessagesStatus" parameterType="int">
+      update tosky.messages set status=1
+      <if test="messagesID !=null">
+          where
+      messagesID = #{messagesID}
+      </if>
+   </update>
+
+<!--    查询某个用户下的所有信息（被收藏或点赞）-->
+    <select id="queryAllMessages" resultType="Messages">
+       select * from tosky.messages
+       <if test="authorID !=null">
+        where authorID=#{authorID} order by messagesID desc
+       </if>
+    </select>
+
+    <!--查询某个用户下的所有信息（收藏或点赞的用户信息）-->
+    <select id="queryAllMessagesUser" resultType="User">
+        select username,picture from tosky.user
+        <if test="userID !=null">
+        where userID=#{userID}
+        </if>
+    </select>
+
+    <delete id="deleteMessages" parameterType="int">
+        delete from tosky.messages where messagesID=#{messagesID}
+    </delete>
+
+    <!--reside=alike userID postsID-->
+    <select id="queryMessagesID" resultType="Messages">
+        select * from tosky.messages
+        <where>
+        <if test="reside !=null">
+        reside=#{reside}
+        </if>
+        <if test="userID !=null">
+        and userID=#{userID}
+        </if>
+        <if test="postsID !=null">
+        and postsID=#{postsID}
+        </if>
+        </where>
+    </select>
+
+    <!--分页查询某个用户下的所有信息（被收藏或点赞）-->
+    <select id="queryPagesMessages" resultType="Messages">
+       select * from tosky.messages
+        where authorID=#{authorID} order by messagesID desc limit #{page},7
+    </select>
+
+    <!--数量）某个用户下的所有信息（被收藏或点赞）-->
+    <select id="queryMessagesCount" resultType="int">
+       select count(*) from tosky.messages
+       <if test="authorID !=null">
+        where authorID=#{authorID}
+       </if>
+    </select>
+
+    <!--    根据reside，userID，postsID，查询指定信息-->
+    <select id="queryOneMessages" resultType="Messages">
+       select * from tosky.messages
+       <where>
+       <if test="reside!=null">
+            reside=#{reside}
+       </if>
+       <if test="userID!=null">
+            and userID=#{userID}
+       </if>
+       <if test="postsID!=null">
+            and postsID=#{postsID}
+       </if>
+       </where>
+    </select>
+
+<!--    通过id修改某条信息-->
+    <update id="updateMessages">
+        update tosky.messages
+      set times=#{times}
+      <if test="messagesID!=null">
+      where messagesID=#{messagesID}
+      </if>
+    </update>
+
+    <!--批量删除信息-->
+    <delete id="deleteBatchMessages">
+        delete from tosky.messages
+    where
+        messagesID=#{messagesID}
+    </delete>
+
+    <!--删除某个用户下的所有信息-->
+    <delete id="deleteAllMessagesByUserID" parameterType="int">
+        delete from tosky.messages where authorID=#{authorID}
+    </delete>
+</mapper>

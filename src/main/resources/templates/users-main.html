@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台管理系统</title>
+    <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="css/wzz/users-main.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body>
+    <div id="backfade">
+        <div class="team_fade">
+            <button class="fade">×</button>
+            <div id="register_main">
+                <span style="color: #1890FF;font-size: 20px;font-weight: 500;">用户添加栏目</span>
+                <div id="input_land">
+                    用户名：<input type="text" class="registerinput inputs" placeholder="请输入您要添加的用户名"></br>
+                    密码：<input type="text" style="margin-left: 14px;" class="registerinput inputs" placeholder="请输入您要添加的密码"></br>
+                    邮箱：<input type="text" class="registerinput inputs" style="margin-left: 14px;" placeholder="邮箱">
+                </div>
+                <button id="add_number">添加</button>
+            </div>
+        </div>
+        <div class="team_fade">
+            <button class="fade">×</button>
+            <div id="team_revise">
+                <span style="color: #1890FF;font-size: 20px;font-weight: 500;">用户修改栏目</span>
+                <div id="input_r">
+                    用户名：<input type="text" class="team_reivse_input inputs" placeholder="请输入您要修改的ID"></br>
+                    <input style="display: none; margin-left: 14px;" type="password" class="team_reivse_input inputs" placeholder="请输入您要修改的年龄"></br>
+                    年龄：<input style="margin-left: 14px;" type="text" class="team_reivse_input inputs" placeholder="请输入您要修改的年龄"></br>
+                    性别：<input type="radio" class="team_sex" name="team_sex" value="男">男
+                    <input type="radio" class="team_sex" name="team_sex" value="女">女
+                </div>
+                <button id="team_revise_b">修改</button>
+            </div>
+        </div>
+    </div>
+    <div id="feedbackfade">
+        <div id="alert">
+            <div id="alerttext"></div>
+            <a id="alertfade" href="javascript:;">确定</a>
+        </div>
+    </div>
+    <div id="backfades">
+        <div id="imgmax">
+            <button id="imgfade">×</button>
+            <div id="mqp">
+              <img id="images1" src="http://www.pig66.com/uploadfile/2017/0511/20170511074941292.jpg" alt="" />
+            </div>
+       </div>
+    </div>
+    <div id="top">
+        <div style="position: relative;">
+            <a style="margin-left: 20px;" href="">未来头条后台管理系统</a>
+            <a class="top_land" target="_blank" href="user_main">返回新闻主页</a>
+            <a class="get_message" href="javascript:;"></a>
+            <div id="myPopup">个人中心</div>
+        </div>
+    </div>
+    <div id="body">
+        <div class="column">
+            <a id="smaller" href="javascript:;"><i class="fa fa-server" aria-hidden="true"></i></a>
+            <div class="column_a"><i  class="fa fa-steam-square" aria-hidden="true"></i><span class="column_span">用户管理</span></div>
+            <div class="column_a"><i class="fa fa-file-word-o" aria-hidden="true"></i><span class="column_span">文章管理</span></div>
+            <div class="column_a"><i  class="fa fa-envelope-open-o" aria-hidden="true"></i><span class="column_span">用户反馈</span></div>
+            <div class="column_a"><i class="fa fa-exclamation-circle" aria-hidden="true"></i><span class="column_span">文章审核</span></div>
+            <div class="column_a"><i class="fa fa-picture-o" aria-hidden="true"></i><span class="column_span">图片审核</span></div>
+        </div>
+        <div class="function">
+            <div class="functions" id="team">
+                <div class="team_top">
+                    <button class="team_t_b" id="team_delete"><i class="fa fa-minus-square-o" aria-hidden="true"></i>批量删除</button>
+                    <button class="team_t_b" id="team_add"><i class="fa fa-plus-square-o" aria-hidden="true"></i>添加用户</button>
+                    <div>
+                        <input type="text" class="team_find_input" placeholder=" 请输入您要寻找的用户名">
+                        <a href="javascript:;" class="team_find_bon" onclick="teamfind()"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+                    </div>
+                </div>
+                <table class="team_main">
+                    <thead> 
+                    <tr class="tmt">
+                        <th class="ms"><input type="checkbox" onchange="s()" name="team_all" value="all"></th>
+                        <th class="ms">用户名</th>
+                        <th class="ml" style="display: none;">密码</th>
+                        <th class="ms">性别</th>
+                        <th class="ms">年龄</th>
+                        <th class="ml">账号</th>
+                        <th class="ml" style="display:none;">操作码</th>
+                        <th class="ml">邮箱</th>
+                        <th class="ml">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tbody>
+                </table>
+                <div class="team_b">
+                    <span>前往第 <input oninput="changepage()" class="page" autocomplete="off" value="1" min="1" max="10" style="height: 22px;width: 35px;margin: 0;" type="number" name="page"> 页</span>
+                    <a href="javascript:;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="javascript:;" style="background-color:#1890FF;color: white;">1</a>
+                    <a href="javascript:;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    <span id="page_number">共0个用户</span>
+                </div>
+                <div class="team_back_max">
+                    <button onclick="backpagen1()" class="team_back">返回全局查找 . . .</button>
+                </div>
+            </div>
+            <div class="functions" id="article" style="display: none;">
+                <div class="article_top">
+                    <button class="article_t_b" onclick="articledelete()" id="articl_delete"><i class="fa fa-minus-square-o" aria-hidden="true"></i>批量删除</button>
+                    <button class="article_t_s" onclick="articlefail()" id="articl_s"><i class="fa fa-minus-square-o" aria-hidden="true"></i>未审核查询</button>
+                    <div>
+                        <input type="text" class="article_input" placeholder=" 请输入您要寻找的文章与描述">
+                        <a href="javascript:;" onclick="articlefind()" class="article_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+                    </div>
+                </div>
+                <table class="article_main">
+                    <thead> 
+                        <tr class="atmt">
+                            <th class='ams'><input type='checkbox' onchange='aalltrue()' name='article_all' value='all'></th>
+                            <th class="ams" style="display: none">用户名</th>
+                            <th class="ams">发布时间</th>
+                            <th class="ams">文章类型</th>
+                            <th class="ams">文章状态</th>
+                            <th class="aml">文章标题</th>
+                            <th class="aml" style="display: none;">操作码</th>
+                            <th class="aml">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class='ams'><input type='checkbox' name='article_a' value='all'></td>
+                            <td class="ams">阿泽</td>
+                            <td class="ams">2020.12.12</td>
+                            <td class="ams">科技</td>
+                            <td class="ams">未批准</td>
+                            <td class="aml">文章标题3</td>
+                            <td class="aml">
+                                <a class="a_look" href="javascript:;"><i class="fa fa-book" aria-hidden="true"></i>查看内容</a>
+                                <a class="a_reply" href="javascript:;"><i class="fa fa-check-square-o" aria-hidden="true"></i>批准</a>
+                                <a class="a_refuse" href="javascript:;"><i class="fa error" aria-hidden="true"></i>拒绝</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="article_b">
+                    <span>前往第 <input id="article_b_page" oninput="allchange1()" class="page"  value="1" min="1" max="20" style="height: 22px;width: 35px;margin: 0;" type="number" name="page"> 页</span>
+                    <a href="javascript:;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="javascript:;" style="background-color:#1890FF;color: white;">1</a>
+                    <a href="javascript:;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    <span id="apage_number">共0个文章</span>
+                </div>
+                <div class="article_back_max">
+                    <button onclick="backpagen2()" class="article_back">返回全局查找 . . .</button>
+                </div>
+            </div>
+            <div class="functions" id="feedback" style="display: none;">
+                <div class="feedback_fade">
+                    <button class="fade">×</button>
+                    <div id="feedback_main">
+                        <span style="color: #1890FF;font-size: 20px;font-weight: 500;">回复反馈</span>
+                        <div class="feedback_say">反馈内容：</div>
+                        <div id="feedback_text">这是用户反馈的内容</div>
+                        <div class="feedback_say">回复内容：</div>
+                        <textarea type="text" id="feedback_reply" placeholder="回复内容"></textarea>
+                        <button onclick="feedback_to()">回复</button>
+                    </div>
+                </div>
+                <div class="feedback_top">
+                    <button class="feedback_t_b" onclick="feedbackdelete()" id="feedback_delete"><i class="fa fa-minus-square-o" aria-hidden="true"></i>批量删除</button>
+                    <button class="feedback_t_b" onclick="on_feedback()" id="feedback_no"><i class="fa fa-plus-square-o" aria-hidden="true">未处理反馈</i></button>
+                    <div>
+                        <input type="text" class="feedback_find_input" placeholder=" 请输入您要寻找的反馈内容">
+                        <a href="javascript:;" class="feedback_find_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+                    </div>
+                </div>
+                <table class="feedback_main">
+                    <thead>
+                        <tr class="fmt">
+                            <th class="fms"><input type="checkbox" onchange="falltrue()" name="feedback_all" value="all"></th>
+                            <th class="fms none">用户id</th>
+                            <th class="fms">反馈时间</th>
+                            <th class="fms">反馈类型</th>
+                            <th class="fml">联系方式</th>
+                            <th class="fml">反馈内容</th>
+                            <th class="fml">回复内容</th>
+                            <th class="fms">状态</th>
+                            <th class="fml">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class='fms'><input type='checkbox' name='feedback_a' value='all'></td>
+                            <td class="fms none">阿泽1</td>
+                            <td class="fms">2020.12.12</td>
+                            <td class="fms">优化推荐</td>
+                            <td class="fml">2295908251</td>
+                            <td class="fml">
+                                这是反馈内容1,这是反馈内容1,这是反馈内容1,这是反馈内容1,这是反馈内容
+                                这是反馈内容1,这是反馈内容1,这是反馈内容1,这是反馈内容1,这是反馈内容1,
+                                这是反馈内容1,这是反馈内容1,这是反馈内容1,这是反馈内容1,这是反馈内容1,
+                            </td>
+                            <td class="fml">收到</td>
+                            <td class="fms">0</td>
+                            <td class="fml">
+                                <a class="f_look" href="javascript:;"><i class="fa fa-book" aria-hidden="true"></i>查看内容</a>
+                                <a class="f_reply" href="javascript:;"><i class="fa fa-commenting-o" aria-hidden="true"></i>回复</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="feedback_b">
+                    <span>前往第 <input   oninput="allbegin()" class="page" autocomplete="off" value="1" min="1" max="10" style="height: 22px;width: 35px;margin: 0;" type="number" name="page"> 页</span>
+                    <a href="javascript:;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a id="fpages" href="javascript:;" style="background-color:#1890FF;color: white;">1</a>
+                    <a href="javascript:;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    <span id="feedpage_number">共0个用户</span>
+                </div>
+                <div class="feedback_back_max">
+                    <button onclick="backpagen3()" class="feedback_back">返回全局查找 . . .</button>
+                </div>
+            </div>
+            <div class="functions" id="report" style="display: none;">
+                <div class="report_top">
+                    <button class="report_t_b" onclick="reportdelete()" id="report_delete"><i class="fa fa-minus-square-o" aria-hidden="true"></i>批量删除</button>
+                    <button class="report_t_b" onclick="on_report()" id="report_no"><i class="fa fa-plus-square-o" aria-hidden="true">未处理举报</i></button>
+                    <div>
+                        <input type="text" class="report_find_input" placeholder=" 请输入您要寻找的举报内容">
+                        <a href="javascript:;" class="report_find_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+                    </div>
+                </div>
+                <table class="report_main">
+                    <thead> 
+                        <tr class="rmt">
+                            <th class="rms"><input type="checkbox" onchange="ralltrue()" name="report_all" value="all"></th>
+                            <th class="rms none">举报id</th>
+                            <th class="rms none">用户id</th>
+                            <th class="rms none">帖子id</th>
+                            <th class="rms">举报时间</th>
+                            <th class="rms">举报类型</th>
+                            <th class="rml">举报内容</th>
+                            <th class="rml">联系方式</th>
+                            <th class="rms">状态</th>
+                            <th class="rml">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="report_main_body">
+                        <tr>
+                            <td class='rms'><input type='checkbox' name='report_a' value='all'></td>
+                            <td class="rms none">举报id</td>
+                            <td class="rms none">阿泽1</td>
+                            <td class="rms none">帖子id</td>
+                            <td class="rms">2020.12.12</td>
+                            <td class="rms">优化推荐</td>
+                            <td class="rml">这是举报内容</td>
+                            <td class="rml">1888888</td>
+                            <td class="rms">0</td>
+                            <td class="rml">
+                                <a class="r_look" href="javascript:;"><i class="fa fa-book" aria-hidden="true"></i>查看内容</a>
+                                <a class="r_reply" href="javascript:;"><i class="fa fa-commenting-o" aria-hidden="true"></i>回复</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="report_b">
+                    <span>前往第 <input   oninput="r_allbegin()" class="page" autocomplete="off" value="1" min="1" max="10" style="height: 22px;width: 35px;margin: 0;" type="number" name="page"> 页</span>
+                    <a href="javascript:;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a id="rpages" href="javascript:;" style="background-color:#1890FF;color: white;">1</a>
+                    <a href="javascript:;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    <span id="reportpage_number">共0个用户</span>
+                </div>
+                <div class="report_back_max">
+                    <button onclick="backpagen4()" class="article_back">返回全局查找 . . .</button>
+                </div>
+            </div>
+            <div class="functions" id="picture" style="display: none;">
+                <div class="picture_top">
+                    <button class="picture_t_b" onclick="picturedelete()" id="picture_delete"><i class="fa fa-minus-square-o" aria-hidden="true"></i>批量删除</button>
+                    <button class="picture_t_b" onclick="passp()" id="picture_reply"> <i class="fa fa-plus-square-o" aria-hidden="true"> 批量审核</i></button>
+                    <button class="picture_t_b" onclick="nopassp()" id="picture_delete"> <i class="fa fa-minus-square-o" aria-hidden="true"> 批量拒绝</i></button>
+                    <button class="picture_t_b" onclick="topassp()" id="picture_no"> <i class="fa fa-plus-square-o" aria-hidden="true"> 未处理图片</i></button>
+                    <button class="picture_t_b" onclick="pallcheck()" id="picture_no"> <i class="fa fa-plus-square-o" aria-hidden="true"> 全选</i></button>
+                    <div>
+                        <input type="text" class="picture_find_input" placeholder=" 请输入您要寻找的图片描述">
+                        <a href="javascript:;" class="picture_find_bon" onclick="findimg()"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+                    </div>
+                </div>
+                <div class="picture_main">
+                    <div class="picture_a">
+                        <div class="pictures" style="background-image: url(img/wzz/feedback.webp)"></div>
+                        <input type='checkbox' name='picture_input' value='all'>
+                        <div class="picture_bon" >
+                            <div class="p_describe">这是图片描述</div>
+                            <div class="p_status">审核中</div>
+                            <span style="display: none;"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="picture_b">
+                    <span>前往第 <input   oninput="pchangepage() " class="page" autocomplete="off" value="1" min="1" max="10" style="height: 22px;width: 35px;margin: 0;" type="number" name="page"> 页</span>
+                    <a href="javascript:;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a id="ppages" href="javascript:;" style="background-color:#1890FF;color: white;">1</a>
+                    <a href="javascript:;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    <span id="picture_number">共0个用户</span>
+                </div>
+                <div class="picture_back_max">
+                    <button onclick="backpagen5()" class="picture_back">返回全局查找 . . .</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-3.6.0.js"></script>
+<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
+<script src="js/sweetalert-dev.js"></script>
+<script src="js/wzz/users-top.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/wzz/users-feedback.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/wzz/users-article.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/wzz/users-team.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/wzz/users-report.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/wzz/users-picture.js" type="text/javascript" charset="utf-8"></script>
+</html>

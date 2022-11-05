@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <title>用户文章</title>
+</head>
+<style>
+    .main {
+        border: #0771f3 1.5px solid;
+        border-radius: 6px;
+        box-shadow: #b1aeae 0px 0px 6px;
+        max-width: 1100px;
+        min-width: 500px;
+        padding: 20px;
+        margin: 20px auto;
+        background-color: aliceblue;
+        position: relative;
+    }
+
+    .message {
+        border-radius: 15px;
+        max-width: 1100px;
+        padding: 10px;
+        height: 50px;
+        background-color: #f3f3f3;
+    }
+
+    span {
+        color: #0771f3;
+        margin-right: 20px;
+    }
+
+    .type {
+        margin-top: 5px;
+        height: 20px;
+
+    }
+
+    #type {
+        border: #64a6f7 1px solid;
+        font-size: 14px;
+        height: 18px;
+        padding: 1px 5px;
+        border-radius: 6px;
+    }
+
+    #ttt {
+        border: #64a6f7 1px solid;
+        font-size: 14px;
+        height: 18px;
+        padding: 1px 5px;
+        border-radius: 6px;
+    }
+
+    #title {
+        font-size: 22px;
+        font-weight: 600;
+        margin-top: 10px;
+        max-width: 1100px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #f3f3f3;
+    }
+
+    #in {
+        margin-top: 5px;
+        max-width: 1100px;
+        padding: 10px;
+        border-radius: 15px;
+        background-color: #f3f3f3;
+    }
+
+    button {
+        width: 30px;
+        position: absolute;
+        top: 20px;
+        height: 30px;
+        background-color: #7fb0eb;
+        border: #0771f3 1px solid;
+        border-radius: 8px;
+        color: #0771f3;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0771f3;
+        color: white;
+    }
+
+    .back {
+        right: 30px;
+        width: 30px;
+    }
+
+    .pass {
+        width: 60px;
+        padding: 0 5px;
+        right: 100px;
+    }
+</style>
+
+<body>
+    <div class="main">
+        <button class="pass" onclick="pass()">批准</button>
+        <h2>文章审核</h2>
+        <div class="message">
+            <div>
+                <i class="fa fa-address-card-o" aria-hidden="true">发布用户：</i><span id="us">id</span>
+                <i class="fa fa-clock-o" aria-hidden="true">发布时间：</i><span id="time">2021.12.12</span>
+            </div>
+            <div class="type">
+                文章类型：<span id="type">科技</span>
+                文章状态：<span id="ttt">批准</span>
+            </div>
+        </div>
+        <div id="title"></div>
+        <div id="in">
+            水电费水电费水电费大赛水电费收到发生的发水电费是
+            水电费水电费水电费大赛水电费收到发生的发水电费是
+        </div>
+    </div>
+</body>
+<script>
+    var us = document.getElementById("us");
+    var time = document.getElementById("time");
+    var ttt = document.getElementById("ttt");
+    var main = document.getElementById("in");
+    var ttt = document.getElementById("ttt");
+    var title = document.getElementById("title");
+    let text = localStorage.getItem('a_content');
+    let id = localStorage.getItem('a_id');
+    us.innerHTML = localStorage.getItem('a_us');
+    time.innerHTML = localStorage.getItem('a_time');
+    type.innerHTML = localStorage.getItem('a_type');
+    ttt.innerHTML = localStorage.getItem('a_ttt');
+    if (localStorage.getItem('a_ttt') == '未批准') {
+        ttt.style.border = "#ec4c4c 1px solid"
+        ttt.style.color = '#ec4c4c'
+
+        function pass() {
+            let choose = confirm("你是否确定批准标题为：" + title.innerHTML + " 的文章?");
+            if (choose == true) {
+                $.post('http://localhost:8080/ToSkyNews_war_exploded/posts/auditingPosts', { "postsID": id },
+                    function (date) {
+                        alert("成功批准！");
+                        ttt.style.border = "#64a6f7 1px solid"
+                        ttt.style.color = '#64a6f7'
+                        ttt.innerHTML = "批准"
+                        changepage();
+                    })
+            }
+        }
+    } else {
+        function pass() {
+            alert("该文章已批准！");
+        }
+    }
+    title.innerHTML = localStorage.getItem('a_title');
+    main.innerHTML = text;
+</script>
+<script src="js/jquery-3.6.0.js"></script>
+
+</html>

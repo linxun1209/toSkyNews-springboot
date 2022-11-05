@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>找回密码</title>
+    <link rel="shortcut icon" href="static/img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="css/yxy/forgetPass.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body>
+<div class="allPage">
+    <div class="tip">
+        <p class="tipText">请输入验证码</p>
+        <button class="tipOk">确定</button>
+    </div>
+    
+    <div class="findPass">
+        <h3>找回密码</h3>
+        <div class="userHead"></div>
+        <form name="findPassInfo">
+            <span>账号&nbsp;&nbsp;<span id="accountTip">账号不能为空</span></span>
+            <input type="text" placeholder="请输入账号" class="inputAccount"/>
+            <span>新密码&nbsp;&nbsp;<span id="newPassTip">新密码格式错误</span></span>
+            <div class="newPassBox">
+                <input type="password" placeholder="包含英文数字6-12位" class="newPass"/>
+                <i class="fa fa-eye" aria-hidden="true" id="eyeOpen_1"></i>
+                <i class="fa fa-eye-slash" aria-hidden="true" id="eyeClose_1"></i>
+            </div>
+            <span>确认新密码&nbsp;&nbsp;<span id="sureTip">请确认密码</span></span>
+            <div class="surePassBox">
+                <input type="password" placeholder="请确认新密码" class="surePass"/>
+                <i class="fa fa-eye" aria-hidden="true" id="eyeOpen_2"></i>
+                <i class="fa fa-eye-slash" aria-hidden="true" id="eyeClose_2"></i>
+            </div>
+            <span>邮箱&nbsp;&nbsp;<span class="mailTip">邮箱不能为空</span></span>
+            <input type="text" placeholder="请输入邮箱" class="mail"/>
+            <input type="text" placeholder="输入验证码" class="inputNum"/>
+            <input type="button" value="获取验证码" class="getNum">
+            <input type="button" value="确定" class="newPassBtn"/>
+        </form>
+    </div>
+</div>
+<script src="js/jquery-3.6.0.js"></script>
+<script type="text/javascript" src="js/yxy/forgetPass.js"></script>
+</body>
+</html>

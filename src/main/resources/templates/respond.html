@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人空间</title>
+    <link rel="shortcut icon" href="static/img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="css/zyt/response.css">
+</head>
+<body>
+   <!-- 反馈栏目 -->
+   <div id="feedback">
+    <div id="feedback_main">
+        <div class="feedback_main_top">
+            反馈栏目
+            <img src="static/img/wzz/biaoqin1.gif" alt="">
+            <a href="javascript:;" onclick="Feedback_down()">×</a>
+        </div>
+        <div class="feedback_link">
+            <i>*</i>
+            反馈类型：
+        </div>
+        <div class="feedback_link">
+            <input type="radio" class="feedback_sex" name="feedback_type" value="优化推荐">优化推荐
+            <input type="radio" class="feedback_sex" name="feedback_type" value="bug报备">bug报备
+            <input type="radio" class="feedback_sex" name="feedback_type" value="其他">其他
+        </div>
+        <div class="feedback_link">
+            <i>*</i>
+            联系方式：
+        </div>
+            <input type="text" class="feedback_send" placeholder="邮箱/电话号">
+        <div class="feedback_link">
+            <i>*</i>
+            您的反馈：
+        </div>
+        <textarea type="text" class="feedback_text" placeholder="请填写反馈内容"></textarea>
+        <div style="font-weight: 600;" class="feedback_link">
+            <i>*</i>
+            欢迎您的反馈!
+            <i>*</i>
+        </div>
+        <button id="tofeedback" class="havaland">发送反馈<tton>
+    </div>
+</div>
+ <!-- 反馈栏目 -->
+ <script src="js/zyt/js/respond.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>消息空间</title>
+    <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/wzz/user-feedback.min.css" type="text/css">
+    <link rel="stylesheet" href="css/wzz/new.min.css" type="text/css">
+</head>
+<body>
+    <!-- alert()方法 -->
+    <div id="feedbackfade">
+        <div id="alert">
+            <div id="alerttext">内容</div>
+            <a id="alertfade" href="javascript:;">确定</a>
+        </div>
+    </div>
+    <!-- alert()方法 -->
+    <!-- 反馈栏目 -->
+    <div id="feedback">
+        <div id="feedback_main">
+            <a href="javascript:;" onclick="Feedback_down()">×</a>
+            <div class="min_feedback_title">您的反馈内容：</div>
+            <div class="min_feedback_text">这是回复内容</div>
+            <div class="min_feedback_title">反馈回复：</div>
+            <div class="min_feedback_text">这是回复内容</div>
+            <div class="min_feedback_bottom">------管理员</div>
+            <div class="min_feedback_bottom">感谢您的反馈！<i>*</i></div>
+        </div>
+    </div>
+     <!-- 反馈栏目 -->
+    <div id="top">
+        <div class="container2">
+            <button class="back" onclick="back()"><i class="fa fa-reply-all" aria-hidden="true"></i></button>
+            <div class="top_find">
+                <input type="text" class="food_find_input" placeholder=" 请输入您要寻找的文章与描述">
+                <a href="javascript:;" class="food_find_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+            </div>
+            <a href="" id="title">消息空间</a>
+            <a id="top_header" href="javascript:;">
+                <img id="top_img_header" src="img/wzz/header.jpg" alt="">
+                <div id="top_name">用户昵称</div>
+            </a>
+        </div>
+    </div>
+    <div id="main">
+        <div id="main-left">
+            <a class="feedback-sort" href="javascript:;"><div class="sortred"></div>赞或收藏</a>
+            <a class="feedback-sort" href="javascript:;">举报空间</a>
+            <a class="feedback-sort" href="javascript:;"><div class="sortred"></div>反馈空间</a>
+        </div>
+        <div id="main-right">
+            <div class="main-right-top">反馈栏目<a href='javascript:;'>清空该信息空间</a></div>
+            <a class="feedback-a" href="javascript:;">
+                <div class="red"></div>
+                <button class="feedback-delete"><i class="fa fa-trash-o" aria-hidden="true"></i> 删除</button>
+                <div class="feedback-a-text">反馈内容</div>
+                <div class="feedback-a-message">
+                    <span class="mfeedbackid" style="display: none;"></span>
+                    <span class="mfeedbackt" style="display: none;"></span>
+                    <span >2022.12.03</span>
+                    <span >类型</span>
+                    <span class="status">未反馈</span>
+                </div>
+            </a>
+            <div class="alike-a">
+                <div class="red"></div>
+                <img src="img/wzz/header.jpg" class="message-img" alt="">
+                <div class="message-card">
+                    <div class="message-card-top">
+                        <a href="javascript:;" class="message-username">这是用户名</a>
+                        <span class="message-tpye">点赞了你的文章：</span>
+                        <span class="message-userid" style="display: none;"></span>
+                        <span class="message-postid" style="display: none;"></span>
+                    </div>
+                    <div class="message-card-bon">
+                        <a class="message-postname" href="javascript:;">这是你自己的文章标题这是你自己的文章标题这是你自己的文章标题这是你自己的文章标题这是你自己的文章标题这是你自己的文章标题</a>
+                    </div>
+                </div>
+                <div class="message-con">
+                    <button class="message-delete" ><i class="fa fa-trash-o" aria-hidden="true"></i></button></br>
+                    <span class="message-time">2022-05-12 16:38</span>
+                </div>
+            </div>
+            <div class="main-right-bon">
+                <button>最后一页</button>
+                <a href="javascript:;"><i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                <a id="rpages" href="javascript:;" style="background-color:#1890FF;color: white;">1</a>
+                <a href="javascript:;"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                <span id="reportpage_number">共0个数据</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-3.6.0.js"></script>
+<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
+<script src="js/sweetalert-dev.js"></script>
+<script src="js/wzz/ownmessage.js" type="text/javascript" charset="utf-8"></script>
+</html>

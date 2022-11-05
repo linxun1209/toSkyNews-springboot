@@ -1,0 +1,121 @@
+.instruction {
+    width: 100%;
+    height: 800px;
+
+    .instruction_wrap {
+        position: relative;
+        margin: 0 auto;
+        width: 1255px;
+        height: 100px;
+
+        .instruction_video {
+            width: 100%;
+            height: 100px;
+
+            .text {
+                position: absolute;
+                top: 30px;
+                left: 540px;
+                color: #fff;
+                font-size: 36px;
+                z-index: 6;
+                width: 400px;
+            }
+
+            .search {
+                position: absolute;
+                top: 120px;
+                left: 430px;
+                width: 400px;
+                height: 80px;
+
+                .search_input {
+                    width: 400px;
+                    height: 40px;
+                    padding-left: 20px;
+                    color: #999;
+                    outline: 0;
+                    border-radius: 10px;
+                    border: 2px solid rgb(82, 131, 210);
+                }
+
+                .search_btn {
+                    position: absolute;
+                    top: 0px;
+                    left: 379px;
+                    width: 45px;
+                    height: 45px;
+                    border: 0;
+                    border-radius: 5px;
+                    background-color: rgb(82, 131, 210);
+
+                    #icon {
+                        margin-top: 15px;
+                        margin-left: 15px;
+                        color: #fff;
+                    }
+                }
+            }
+
+            #bottom_arrow {
+                position: absolute;
+                top: 355px;
+                left: 620px;
+                color: #fff;
+                opacity: .5;
+            }
+        }
+
+        .show {
+            position: absolute;
+            top: 410px;
+            left: 0px;
+            width: 100%;
+            height: 50px;
+            // color: #fff;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 50px;
+            // background-color: rgb(42, 144, 240);
+            text-align: center;
+        }
+
+        .flex {
+            position: absolute;
+            top: 500px;
+            left: 140px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 900px;
+            height: 600px;
+
+            .item {
+                width: 22%;
+                height: 200px;
+                margin-top: 30px;
+                margin-left: 97px;
+                border-radius: 200px;
+                box-shadow: 2px 2px 0px opx rgba(69, 7, 253, 0.8);
+                border: 2px solid rgb(7, 150, 253);
+
+                img {
+                    width: 100%;
+                    height: 200px;
+                    border-radius: 200px;
+                }
+
+                .item_text {
+                    margin-top: 24px;
+                    margin-left: 80px;
+                }
+            }
+        }
+    }
+}
+
+.item:hover {
+    transform: translateY(-30px);
+    transition: transform 1s;
+    transform: scale(1.5);
+}

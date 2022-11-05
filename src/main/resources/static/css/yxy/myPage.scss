@@ -1,0 +1,914 @@
+$userColor:rgb(118, 150, 201);
+$blueColor:#1890FF;
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(242,242,242);
+    a{
+        text-decoration: none;
+    }
+}
+//粉丝及关注
+.personList{
+    position: fixed;
+    // width: 460px;
+    width: 0;
+    height: 100%;
+    right: 0px;
+    top: 50px;
+    transition: all .7s;
+    background-color: #fff;
+    overflow-y: scroll;
+    z-index: 99;
+    .addBtn{
+        position: relative;
+    }
+    .left,
+    .leftAtt{
+        // display: none;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        margin-top: 300px;
+        left: 10px;
+        background-color: #615f5f;
+        opacity: .5;
+        z-index: 99;
+        color: #fff;
+        line-height: 50px;
+        text-align: center;
+    }
+    .right,
+    .rightAtt{
+        display: inline-block;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+        margin-top: 300px;
+        right:10px;
+        background-color: #615f5f;
+        opacity: .5;
+        z-index: 99;
+        color: #fff;
+        line-height: 50px;
+        text-align: center;
+    }
+    .leftAtt,
+    .rightAtt{
+        display: none;
+    }
+    .listNav{
+        position: fixed;
+        width: 460px;
+        height: 50px;
+        top: 50px;
+        background-color: #fff;
+        z-index: 99;
+        .fansNav,
+        .focusNav{
+            display: inline-block;
+            width: auto;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px;
+            margin-left: 10%;
+            cursor: pointer;
+        }
+        .fansNav:hover{
+            color: $userColor;
+        }
+        .focusNav:hover{
+            color: $userColor;
+        }
+        i{
+            display: inline-block;
+            font-size: 20px;
+            line-height: 50px;
+        }
+        .close{
+            display: inline-block;
+            margin-left: 40%;
+            cursor: pointer;
+            &:hover{
+                color: $userColor;
+            }
+        }
+    }
+    .nullBox{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100px;
+        margin-top: 200px;
+        
+        p{
+            display: inline-block;
+            width: 80%;
+            text-align: center;
+            font-size: 20px;
+            i{
+                display: inline-block;
+                width: 20%;
+                font-size: 20px;
+            }
+        }
+    }
+    .fansList{
+        position: relative;
+        width: 100%;
+        height: auto;
+        background-color: #fff;
+        margin-top: 60px;
+        .fansItem{
+            display: flex;
+            //justify-content: center;
+            align-items: center;
+            width: 90%;
+            height: 75px;
+            margin-left: 5%;
+            cursor: pointer;
+            &:hover{
+                background-color:rgb(248,248,248);
+            }
+            .fansHead{
+                display: inline-block;
+                width: 48px;
+                height: 48px;
+                border-radius: 48px;
+                background-image: url(../../img/yxy/userHead.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+                cursor: pointer;
+            }
+            .fans_1{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 60%;
+                height: 100%;
+                margin: 20px;
+                color: #707070;
+                .fansName{
+                    color: #222;
+                    font-size: 18px;
+                    // font-weight: 700;
+                }
+                .fansInfo{
+                    width: 100%;
+                    display: flex;
+                    justify-content: center;
+                    // overflow: hidden;
+                    p{
+                        width: 100%;
+                        height: 20px;
+                        line-height: 20px;
+                        overflow: hidden;
+                    }
+                }
+
+            }
+            .attention,
+            .noAttention{
+                width: auto;
+                display: inline-block;
+                cursor: pointer;
+            }
+            .noAttention{
+                display: none;
+            }
+        }
+    }
+}
+//上部导航栏
+#all_top{
+    position: fixed;
+    height: 35px;
+    padding: 5px 0;
+    width: 100%;
+    top: 0;
+    background-color: white;
+    box-shadow: #888888 0px 1px 3px;
+    // position:fixed;
+    z-index: 100;
+    a{
+        text-decoration: none;
+    }
+    .top_find{
+        margin-left: 30px;
+        border-radius: 15px;
+        width: 360px;
+        height:35px;
+        display: flex;
+        input{
+            width: 260px;
+            border-radius:10px 0px 0px 10px;
+            padding-left: 15px;
+            border: 1px solid #1682e6;
+            outline: none;
+        }
+        a{
+            border-radius:0 10px 10px 0;
+            display: block;
+            height: 21px;
+            width: 50px;
+            color: white;
+            background-color: #1682e6;
+            padding: 7px 10px;
+        }
+    }
+    .top_land{
+        width: auto;
+        margin-top: 2px;
+        margin-left: 30px;
+        padding: 0 18px;
+        color: white;
+        text-align: center;
+        border-radius: 5px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #1890FF;
+        &:hover{
+            background-color: #067ae6;
+        }
+    }
+}
+.container2{
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 900px;
+    height: 100%;
+    display: flex;
+}
+.column_sort{
+    width: 700px;
+    height: 35px;
+    display: flex;
+    justify-content: space-around;
+    a{
+        display: block;
+        border-radius: 5px;
+        height: 30px;
+        line-height: 30px;
+        padding: 2.5px 10px;
+        color: black;
+        font-size: 20px;
+        &:hover{
+            background-color: gainsboro;
+            color: #067ae6;
+        }
+    }
+}
+//侧边栏
+.tool_item{
+    z-index: 100;
+    width: 50px;
+    height: 150px;
+    position: fixed;
+    top: 72vh;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    a{
+        display: block;
+        border-radius: 8px;
+        padding: 5px;
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        text-align: center;
+        color: #615f5f;
+        border: 2px gainsboro solid;
+        background-color: white;
+        transition: .3s;
+        &:hover{
+            background-color: $blueColor;
+            color: white;
+        }
+        i{
+            padding:0 5px;
+        }
+    }
+}
+
+
+//弹窗
+.chooseCover{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    position: fixed;
+    top: 0px;
+    z-index: 101;
+    display: none;
+    opacity: 0;
+    .tip{
+        position: relative;
+        width: 300px;
+        height: 0px;
+        z-index: 99;
+        overflow: hidden;
+        top: 120px;
+        // left: 40%;
+        background-color: #fff;
+        // box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+        border-radius: 10px;
+        transition: all .4s;
+        p{
+            position: absolute;
+            width: 100%;
+            height: 60px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 21px;
+            font-weight: 700;
+            color: #6fa1e3;
+            top: 30px;
+        }
+        .choose{
+            position: absolute;
+            display: flex;
+            bottom: 0;
+            justify-content: space-around;
+            width: 100%;
+            height: 40px;
+            .tipNo,
+            .tipOk{
+                width: 50%;
+                height: 40px;
+                border: none;
+                color: #fff;
+                background-color: #2f70c5;
+                border: 1px solid rgb(137, 175, 220)
+                // margin-left: 190px;
+            }
+        }
+    }
+}
+.sureCover{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    position: fixed;
+    top: 0px;
+    z-index: 101;
+    display: none;
+    opacity: 0;
+    .successTip{
+        position: relative;
+        width: 300px;
+        height: 0px;
+        z-index: 99;
+        overflow: hidden;
+        top: 120px;
+        // left: 40%;
+        background-color: #fff;
+        // box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+        border-radius: 10px;
+        transition: all .4s;
+        p{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 21px;
+            font-weight: 700;
+            margin-top: 30px;
+            color: #6fa1e3;
+        }
+        .successOk{
+            position: absolute;
+            display: flex;
+            bottom: 0;
+            justify-content: space-around;
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            background-color: #2f70c5;
+            color: rgb(255, 255, 255);
+            border: 1px solid rgb(137, 175, 220)
+            // margin-left: 190px;
+        }
+    }
+}
+
+//主内容
+.allPage{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2px auto;
+    max-width: 1100px;
+    min-width: 900px;
+    height: auto;
+    border-top: 1px solid transparent;
+    
+    // .bgColor{
+    //     background-: rgba(0,0,0,.5);
+    // }
+    //获赞情况
+    .likeBox{
+        position: absolute;
+        top: 0;
+        width: 300px;
+        // height: 250px;
+        height: 0;
+        background-color: #fff;
+        border-radius: 10px;
+        z-index: 99;
+        overflow: hidden;
+        transition: all .5s;
+        box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+        .userName{
+            display: inline-block;
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 20px;
+            color: #707070;
+            font-weight: 700;
+            
+        }
+        p{
+            width: 100%;
+            text-align: center;
+            margin-top: 30px;
+            font-size: 18px;
+        }
+        .likeBoxName{
+            margin-top: 50px;
+        }
+        i{
+            width: 100%;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 28px;
+
+        }
+        .know{
+            width: 100%;
+            height: 50px;
+            background-color: rgb(90, 126, 185);
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            margin-top: 35px;
+            //border-radius: 10px;
+            cursor: pointer;
+        }
+    }
+
+    //用户信息
+    .userBox{
+        display: flex;
+        justify-content: space-between;
+        width: 565px;
+        height: 150px;
+        background-color: rgb(242,242,242);
+        margin-top: 100px;
+        border: 1px solid transparent;
+        .userPrivate{
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .userName{
+                display: inline-block;
+                width: 100%;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                font-size: 20px;
+                color: #707070;
+                font-weight: 700;
+            }
+            i{
+                position: absolute;
+                top: 90px;
+                left: 100px;
+                font-weight: 700;
+                font-size: 18px;
+            }
+            #girl{
+                display: none;
+            }
+            #boy{
+                color: #69a4dc;
+            }
+
+        }
+        .userHead{
+            width: 100px;
+            height: 100px;
+            border-radius: 100px;
+            background-image: url(../../img/yxy/userHead.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: 6px;
+            margin-left: 10px;
+        }
+        .userInform{
+            width: 360px;
+            height: 112px;
+            background-color: rgb(242,242,242);
+        }
+        .account{
+            display: inline-block;
+            width: 100px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 10px;
+            margin-top: 10px;
+            font-weight: 700;
+            font-size: 20px;
+            color: #707070;
+        }
+        .accountText{
+            font-size: 20px;
+            color: #707070;
+            font-weight: 700;
+        }
+        
+        .userInform{
+            width: 360px;
+            height: 100%;
+            background-color: rgb(242,242,242);
+            
+            .changeUser{
+                width: 100px;
+                height: 35px;
+                line-height: 30px;
+                border: none;
+                border-radius: 10px;
+                margin-left: 20px;
+                color: #fff;
+                background-color: rgb(114, 147, 200);
+            }
+            .relation{
+                display: flex;
+                justify-content: space-between;
+                margin-top: 25px;
+                width: 360px;
+                height: 28px;
+                .like,
+                .fans,
+                .focus{
+                    display: inline-block;
+                    width: auto;
+                    height: 28px;
+                    color: #494444;
+                    font-size: 18px;
+                    cursor: pointer;
+                    span{
+                        width: auto;
+                        font-size: 20px;
+                        font-weight: 700;
+                        margin-right: 5px;
+                    }
+                }
+            }
+            .brief{
+                display: flex;
+                width: 100%;
+                height: 20px;
+                margin-top: 20px;
+                color: #494444;
+                span{
+                    width: 20%;
+                    height: 20px;
+                    line-height: 20px;
+                }
+                .briefText{
+                    display: inline-block;
+                    width: 80%;
+                    text-overflow: ellipsis;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    height: 20px;
+                    line-height: 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    .works{
+        margin-top: 70px;
+        width: 676px;
+        height: 464px;
+        .workNav{
+            // display: none;
+            position: relative;
+            width: 676px;
+            height: 40px;
+            border-bottom: 1px solid #b8b5b5;
+            span{
+                display: inline-block;
+                width: auto;
+                height: 24px;
+                line-height: 24px;
+                font-size: 20px;
+                margin: 0 10px;
+                cursor: pointer;
+                &:hover{
+                    color: $userColor;
+                }
+            }
+            .drafts{
+                color: rgb(70, 175, 179);
+                &:hover{
+                    color: rgb(61, 149, 154);
+                }
+            }
+            .myWorksNav{
+                color: $userColor;
+            }
+            #find{
+                position: absolute;
+                right: 50px;
+                font-size: 20px;
+                cursor: pointer;
+                &:hover{
+                    color: $userColor;
+                }
+            }
+        }
+        .searchNav{
+            display: none;
+            position: relative;
+            width: 676px;
+            height: 40px;
+            border-bottom: 1px solid #b8b5b5;
+            i{
+                font-size: 20px;
+            }
+            .searchInput{
+                width: 380px;
+                height: 30px;
+                padding: 2px 30px 2px 5px;
+                outline: none;
+                border: none;
+                font-size: 18px;
+                margin-left: 20px;
+            }
+            .searchBox,
+            .cancel{
+                display: inline-block;
+                width: 50px;
+                height: 30px;
+                text-align: center;
+                line-height: 30px;
+                cursor: pointer;
+                &:hover{
+                    color: $userColor;
+                }
+            }
+            .searchBox{
+                margin-left: 40px;
+                border-right: 1px solid #e0dcdc;
+            }
+        }
+        .workList{
+            width: 100%;
+            height: auto;
+            .moreWorks,
+            .moreCollect{
+                display: none;
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                color: #6fa1e3;
+                font-size: 20px;
+                font-weight: 700;
+            }
+            
+        }
+        // 有作品时
+        .haveWorks{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            height: auto;
+            .haveCollect{
+                display: none;
+            }
+            .worksItem{
+                width: 100%;
+                height: auto;
+                border-bottom: 1px solid rgb(186, 183, 183);
+                .workTitle{
+                    width: 100%;
+                    height: 29px;
+                    margin-top: 24px;
+                    font-size: 22px;
+                    line-height: 29px;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    cursor: pointer;
+                    &:hover{
+                        color: #3b89d1;
+                    }
+                }
+                .footer{
+                    display: inline-block;
+                    width: 100%;
+                    height: 20px;
+                    margin: 15px 0 15px 0;
+                    color: #888888;
+                }
+                .cancelLove{
+                    width: auto;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-left: 30px;
+                    cursor: pointer;
+                    &:hover{
+                        color: #3b89d1;
+                    }
+                }
+                .discuss,
+                .giveLike,
+                .textTime{
+                    margin: 0px 15px;
+                    cursor: pointer;
+                }
+                .status{
+                    display: inline-block;
+                    width:60px;
+                    height: 20px;
+                    text-align: center;
+                    line-height: 20px;
+                    background-color: red;
+                    border-radius: 5px;
+                    color: #fff;
+                    font-size: 16px;
+                }
+                .handle{
+                    display: inline-block;
+                    color: #888888;
+                    margin-left: 30px;
+                    .deleteText,
+                    .changeText,
+                    .collect{
+                        display: inline-block;
+                        margin: 0 5px;
+                        cursor: pointer;
+                        &:hover{
+                            color: #3b89d1;
+                        }
+                    }
+
+                }
+            }
+        }
+        .moreInfo,
+        .moreCollectInfo{
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            color: #1890FF;
+            cursor: pointer;
+            border: none;
+        }
+        .moreCollectInfo{
+            display: none;
+        }
+        
+        //没有作品时
+        .empty{
+            display: none;
+            // display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            margin-top: 200px;
+            i{
+                width: 100px;
+                text-align: center;
+                font-size: 70px;
+                color: #b8b5b5;
+            }
+            p{
+                width: 100%;
+                font-size: 20px;
+                color: #b8b5b5;
+                text-align: center;
+            }
+        }
+    }
+}
+#feedback{
+    width: 100%;
+    height: 100%;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    position: fixed;
+    top: 0px;
+    z-index: 101;
+    display: none;
+    opacity: 0;
+    #feedback_main{
+        padding: 30px;
+        width: 300px;
+        height: 330px;
+        background-color: white;
+        margin: 20vh auto;
+        border-radius: 5px;
+        position: relative;
+        .feedback_main_top{
+            font-family: YouYuan;
+            font-weight: 900;
+            width: 100%;
+            height: 30px;
+            font-size: 20px;
+            text-align: center;
+            color: #067ae6;
+            img{
+                position: absolute;
+                top: 10px;
+                width: 60px;
+                height: 30px;
+                left: 30px;
+            }
+            a{
+                display: block;
+                width: 25px;
+                height: 25px;
+                line-height: 22px;
+                border-radius: 100px;
+                font-size: 25px;
+                position: absolute;
+                color: #000000;
+                top: 10px;
+                right: 20px;
+                transition: .2s;
+                &:hover{
+                    color: white;
+                    background-color: #69a4dc;
+                }
+            }
+        }
+        .feedback_link{
+            width: 100%;
+            height: 25px;
+            font-size: 14px;
+            i{
+                color: #1682e6;
+                padding-right:5px;
+            }
+        }
+        button{
+            bottom: 25px;
+            right:35px;
+            position: absolute;
+            padding: 7px 10px;
+            border-radius: 8px;
+            font-size: 16px;
+            background-color: #E8F4FF;
+            color: #1890FF;
+            border: #c3e0fc 1px solid;
+            cursor: pointer;
+            &:hover{
+                background-color: #1890FF;
+                color: white;
+                border: #1890FF 1px solid;
+            }
+        }
+        .feedback_send{
+            height: 23px;
+            width: 280px;
+            padding-left: 10px;
+            outline:none;
+            border: 1.5px solid gainsboro;
+            border-radius: 5px;
+        }
+        .feedback_text{
+            resize: none;
+            height: 120px;
+            width: 290px;
+            outline:none;
+            font-size: 14px;
+            border: 1.5px solid gainsboro;
+            border-radius: 5px;
+            line-height: 18px;
+        }
+    }
+}

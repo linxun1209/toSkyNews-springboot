@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.UserMapper">
+    <!-- 注意写好功能后，把mapper绑定到mybatis-config。xml中去 -->
+    <!--用户注册-->
+    <insert id="register" parameterType="User">
+        insert into
+            tosky.user(username,password,account,telephone,picture,age,sex,signature)
+            value(#{username},#{password},#{account},#{telephone},#{picture},#{age},#{sex},#{signature})
+    </insert>
+    <update id="changePassword" parameterType="User">
+        update tosky.user set password=#{password} where account=#{account}
+    </update>
+<!--    账号不能重复-->
+    <select id="knowUser" resultType="User">
+        select UserID from tosky.posts where account=#{account}
+    </select>
+    <update id="change" parameterType="User">
+        update tosky.user set password=#{password} where account=#{account}
+    </update>
+    <!--通过username得到个人信息-->
+    <select id="getPassword" resultType="User">
+        select password=#{password} from tosky.user where username=#{username}
+    </select>
+    <!--通过account得到个人信息-->
+    <select id="getUser" resultType="User">
+        select * from tosky.user where account=#{account}
+    </select>
+    <!--用户修改个人信息-->
+    <update id="updateUser" parameterType="User">
+        update tosky.user
+        set username = #{username},password = #{password},telephone = #{telephone},age=#{age},sex=#{sex},signature=#{signature}
+        where userID = #{userID}
+    </update>
+    <!--根据id删除一个user-->
+    <delete id="deleteUserById" parameterType="int">
+        delete from tosky.user where userID=#{userID}
+    </delete>
+    <!--根据id查询,返回一个user-->
+    <select id="queryUserById" resultType="User">
+        select * from tosky.user
+        where userID = #{userID}
+    </select>
+    <!--    头像更新-->
+    <update id="saveUserProfile" parameterType="User">
+        update tosky.user
+        set picture=#{picture} where account=#{account}
+    </update>
+
+    <!--根据帖子id删除收藏表里面的帖子-->
+    <delete id="deleteCollectionByPostsID" parameterType="int">
+        delete from tosky.collections where postsID=#{postsID}
+    </delete>
+    <!--删除注销用户发布的帖子-->
+    <delete id="deletePostsByUser" parameterType="int">
+        delete from tosky.posts where reside=#{reside}
+    </delete>
+
+    <!--取消关注-->
+    <delete id="deleteFans" parameterType="int">
+        delete from tosky.focus where fansID=#{fansID}
+    </delete>
+    <!--删除注销用户的收藏-->
+    <delete id="deleteCollectionByUser" parameterType="int">
+        delete from tosky.collections where userID=#{userID}
+    </delete>
+    <!--通过用户id返回其发布的所有帖子id-->
+    <select id="queryPostsID" resultType="Posts">
+        select postsID from tosky.posts where reside=#{reside}
+    </select>
+    <!--取消关注-->
+    <delete id="deleteFocus" parameterType="int">
+        delete from tosky.focus where focusID=#{focusID}
+    </delete>
+<!--    &lt;!&ndash;模糊查询&ndash;&gt;-->
+<!--    <select id="vagueQueryUsername" resultType="Posts">-->
+<!--        select * from tosky.user where username like concat('%',#{thing},'%') limit #{column},#{total}-->
+<!--    </select>-->
+    <!--模糊查询-->
+    <select id="vagueQueryUsername" resultType="User">
+        select * from tosky.user where username like concat('%',#{thing},'%')
+    </select>
+    <!--通过分页查询帖子-->
+    <select id="savePages" resultType="User">
+        SELECT * from tosky.user limit #{column},#{total}
+    </select>
+    <!--通过分页查询帖子-->
+    <select id="disDrafts" resultType="Posts">
+        select * from tosky.posts
+        where reside=#{reside}
+        and status=#{status}
+        order by postsID desc
+        limit #{start},#{count}
+    </select>
+    <!--模糊查询-->
+    <select id="vagueSavePages" resultType="User">
+        select * from tosky.user where username like concat('%',#{thing},'%') limit #{column},#{total}
+    </select>
+    <!--查询所有审核过的帖子，也就是status为1的帖子-->
+    <select id="passPosts" resultType="Posts">
+        SELECT * from tosky.posts where status=1
+    </select>
+    <!--用户查询所有未审核过的帖子，也就是status为0的帖子-->
+    <select id="allAuditing" resultType="Posts">
+        SELECT * from tosky.posts where status=0 and reside=#{reside}
+    </select>
+    <!--用户查询所有审核过的帖子，也就是status为1的帖子-->
+    <select id="allPass" resultType="Posts">
+        SELECT * from tosky.posts where status=1 and reside=#{reside}
+    </select>
+    <!--用户查询所有未审核过的图片，也就是status为0的图片-->
+    <select id="allAuditingPicture" resultType="Picture">
+        SELECT * from tosky.picture where status=0 and userID=#{userID}
+    </select>
+    <!--用户查询所有审核过的图片，也就是status为1的图片-->
+    <select id="allPassPicture" resultType="Picture">
+        SELECT * from tosky.picture where status=1 and userID=#{userID}
+    </select>
+    <!--用户根据状态 查询对应的帖子-->
+    <select id="onePicture" resultType="Picture">
+        SELECT * from tosky.picture where status=#{status} and userID=#{userID}
+    </select>
+    <!--其他用户发布帖子总数-->
+    <select id="allCountPosts" resultType="int">
+        SELECT count(*) from tosky.posts where reside=#{reside} and status=1
+    </select>
+    <!--通过分页查询用户收藏帖子id-->
+    <select id="saveCollections" resultType="Collections">
+        SELECT * from tosky.collections where userID=#{userID} order by collectionID desc limit #{column},10
+    </select>
+<!--    通过id和状态值查询相对应的帖子信息-->
+    <select id="trends" resultType ="Posts">
+<!--        select * from posts-->
+<!--        <where>-->
+<!--            <if test="reside!=null">-->
+<!--                and reside = #{reside}-->
+<!--            </if>-->
+<!--            <if test="status != null">-->
+<!--                and status = #{status}-->
+<!--            </if>-->
+<!--        </where>-->
+<!--        order by postsID desc-->
+<!--        limit #{start},#{count}-->
+            select * from tosky.posts
+            where reside=#{reside}
+            and status=#{status}
+            order by postsID desc
+            limit #{start},#{count}
+    </select>
+
+    <!--通过帖子id查询帖子-->
+    <select id="queryPostsById" resultType="Posts">
+        SELECT * from tosky.posts where postsID=#{postsID}
+    </select>
+    <!--通过用户和状态值查询对应的帖子-->
+    <select id="drafts" resultType="Posts">
+        SELECT * from tosky.posts where status=-2 and reside=#{reside}
+    </select>
+    <!--将草稿箱发布-->
+    <update id="upDrafts" parameterType="int">
+        update tosky.posts
+        set status = 0
+        where reside = #{reside}
+    </update>
+    <!--查询除了草稿箱状态,剩下状态的值-->
+    <select id="savePosts" resultType="Posts">
+        SELECT * from tosky.posts where reside=#{reside} and status != -2 limit #{column},10
+    </select>
+
+    <!--根据makerID删除comment-->
+    <delete id="deleteCommentByMakerID" parameterType="int">
+        delete from tosky.comment where makerID=#{makerID}
+    </delete>
+
+    <!--根据makerID删除reviews-->
+    <delete id="deleteReviewsByMakerID" parameterType="int">
+        delete from tosky.reviews where makerID=#{makerID}
+    </delete>
+
+    <!--根据authorID删除messages-->
+    <delete id="deleteMessagesByAuthorID" parameterType="int">
+        delete from tosky.messages where authorID=#{authorID}
+    </delete>
+
+
+</mapper>
+
+
+
+
+
+
+
+
+

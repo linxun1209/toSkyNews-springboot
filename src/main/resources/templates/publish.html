@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来头条</title>
+   <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" type="text/css" media="screen"href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" type="text/css" href="css/lsw/publish.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/cropperjs/2.0.0-alpha.1/cropper.css">
+    <script src="https://cdn.bootcss.com/cropperjs/2.0.0-alpha.1/cropper.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.5.0/jquery.min.js"></script>
+
+</head>
+<body>
+<div id="center">
+    <div id="publishNav">
+        <div id="publishNav-top">
+            <div id="centerNav">
+                <div id="publishNav-icon">
+                    <a id="tosky" href="user_main">TOSKY</a>
+                </div>
+                <div id="publichNav-silder">
+                    <a id="ios-undo-outline" href="user_main"><i class="icon ion-ios-undo-outline" style="font-size: large;font-weight: bold"></i></a>
+                    <a>发布文章</a>
+                </div>
+                <div id="publishNav-right">
+                    <div class="publish-block">
+                        <a id="standard">发文规范</a>
+                    </div>
+                    <div class="publish-block" id="email">
+                        <a><i class="icon ion-ios-email" style="font-size: 15px;"></i>&nbsp;&nbsp;消息</a>
+                    </div>
+                    <div class="publish-block" id="user">
+                        <div id="touxiang">
+                            <div class="user_img"></div>
+                            <span id="user_name">用户昵称</span>
+                        </div>
+                    </div>
+                    <div class="publish-block">
+                        <a></a>
+                    </div>
+                </div>
+                <div id="silder-email">
+                    <li style="margin-top: 5px;" onclick="goPic()">图片管理</li>
+                    <li>评论</li>
+                    <li>粉丝</li>
+                    <li>点赞</li>
+                </div>
+                <div id="silder-user">
+                    <div id="silder-user-top">
+                        <li style="padding-top: 10px;">
+                            <a id="user-login">您好！<span id="user_us"></span></a>
+                        </li>
+                        <li>&nbsp;<i class="icon ion-ribbon-b" style="color: rgb(245, 142, 57);"></i>&nbsp;&nbsp;&nbsp;创作权益</li>
+                        <li>
+                            <div class="join">
+                                <a>加入创作者权益</a>
+                                <a>立即加入&nbsp;<i class="icon ion-ios-play"></i></a>
+                            </div>
+                        </li>
+                        <li>&nbsp;<i class="icon ion-ios-star"></i>&nbsp;&nbsp;&nbsp;头条认证</li>
+                    </div>
+                    <div id="silder-user-bottom">
+                        <li>&nbsp;<i class="icon ion-gear-b"></i>&nbsp;&nbsp;&nbsp;设置</li>
+                        <li onclick="signoutland()" href="javascript:;">&nbsp;<i class="icon ion-power"></i>&nbsp;&nbsp;&nbsp;退出登录</li>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="container">
+        <div id="editor">发布文章</div>
+        <div id="publishTitle">
+            <div id="publish-input-prepend">
+                <a id="prepend">文章标题</a>
+            </div>
+            <input id="titleInput" placeholder="请输入标题" autocomplete="off" maxlength="100">
+            </input>
+            <span id="wordsLength">还能输入100个字</span>
+        </div>
+        <div id="card-body">
+            <div id="card-text">
+                <div id="div1" class="toolbar">
+
+                </div>
+                <textarea id="text1" class="text"></textarea>
+                <textarea id="text2" class="text"></textarea>
+            </div>
+            <div id="label-item">
+                <div id="label-input-prepend">
+                    <a id="label">文章标签</a>
+                </div>
+                <input id="labelInput" autocomplete="off" placeholder="请添加标签"></input>
+            </div>
+        </div>
+        <div id="profile">
+            <a id="choice">是否添加文章封面:</a>
+            <a style="display: inline-block ; width: 20px"></a>
+            <input type="radio" name="radio" class="ml-3" id="carefulOrPass" onclick="check(this.value)" value="是" />
+            <label for="carefulOrPass" class="">是</label>
+            <a style="display: inline-block ; width: 20px"></a>
+            <input type="radio" name="radio" class="ml-3" id="rollbackRevise" onclick="check(this.value)" value="否" />
+            <label for="rollbackRevise" class="">否</label>
+            <input type="text" id="answer" name="CheckResult" hidden/>
+        </div>
+        <div id="profile-silder">
+            <img id="img" accept=".png,.jpg,.jpeg,image/png,image/jpg,image/jpeg" alt="" style="width: 160px;height: 130px;;">
+            <input type="file" style="opacity: 0;z-index: 999" id="file" name="image" size="50">
+            <div class="text-detail" id="text-detail">
+                <span>+</span>
+                <p>点击上传</p>
+            </div>
+        </div>
+        <div id="tailoring-silder">
+            <div id="tailoring">
+                <div class="str">
+                    <img id="fileImg" src="" style="width:160px;height: 110px;">
+                    <div class="tailoring-content-three">
+                        <button class="l-btn cropper-reset-btn">复位</button>
+                        <button class="l-btn cropper-rotate-btn">旋转</button>
+                        <button class="l-btn cropper-scaleX-btn">换向</button>
+                        <button class="l-btn cropper-enlarge-btn">放大</button>
+                        <button class="l-btn cropper-narrow-btn">缩小</button>
+                        <button class="l-btn sureCut" id="sureCut">确定</button>
+                    </div>
+                </div>
+                <div class="tailoring-container">
+                    <div class="black-cloth" onclick="closeTailor(this)"  style="width: 550px"></div>
+                    <div class="tailoring-content">
+                        <div class="tailoring-content-two">
+                            <div class="tailoring-box-parcel">
+                                <img id="tailoringImg" style="width:420px;height: 460px;margin-left: 5px;margin-top: 10px;">
+                            </div>
+                            <div class="preview-box-parcel">
+                                <div class="square previewImg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="label-silder-shadow">
+            <div id="label-silder">
+                <div id="close-label-silder">&times;</div>
+                <li>科学</li>
+                <li>体育</li>
+                <li>军事</li>
+                <li>游戏</li>
+                <li>娱乐</li>
+                <li>其他</li>
+            </div>
+            <div id="successTip">
+                <div id="tckTip">提示</div>
+                <div id="tip" style="margin-left: 110px">发布成功，请耐心等待审核</div>
+                <div id="timeDiv" style="position: absolute;display: none;bottom: 0px;left: 145px; color: #2f70c5;font-size: 14px"><span id="time">3</span>秒后跳转页面....</div>
+                <button id="sure">确定</button>
+            </div>
+        </div>
+    </div>
+    <div id="ok">
+        <div id="btn">
+            <button id="saveBtn" onclick="save()">保存草稿</button>
+            <button id="publishBtn" onclick="publish()">发布</button>
+        </div>
+    </div>
+</body>
+<script src="js/lsw/wangEditor.min.js"></script>
+<script src="js/lsw/jquery.min.js"></script>
+<script src="js/lsw/publish.js"></script>
+
+</html>

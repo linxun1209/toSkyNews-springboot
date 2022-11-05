@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.ImgDataMapper">
+<!--    上传图片库-->
+<insert id="ImgDates" parameterType="Picture">
+    insert into tosky.picture(userID,userImg,userDepiction)
+    value (#{userID},#{userImg},#{userDepiction})
+</insert>
+    <select id="getImg" resultType="Picture">
+        select * from tosky.picture where PictureID=#{PictureID}
+    </select>
+    <select id="getUserIDImg" resultType="Picture">
+        select * from tosky.picture where userID=#{userID}
+    </select>
+    <!--模糊查询-->
+    <select id="vagueQueryPicture" resultType="Picture">
+        select * from tosky.picture where userDepiction like concat('%',#{thing},'%')
+    </select>
+    <!--通过分页查询帖子-->
+    <select id="saveImgPages" resultType="Picture">
+        SELECT * from tosky.picture limit #{column},#{total}
+    </select>
+    <!--模糊查询-->
+    <select id="vagueSaveImgPages" resultType="Picture">
+        select * from tosky.picture where userDepiction like concat('%',#{thing},'%') limit #{column},#{total}
+    </select>
+    <!--管理员审核图片-->
+    <update id="auditPicture" parameterType="Picture">
+        update tosky.picture
+        set status=#{status}
+        where PictureID = #{PictureID}
+    </update>
+    <!--查询未审核的照片，也就是status为0的照片-->
+    <select id="downPicture" resultType="Picture">
+        SELECT * from tosky.picture where status=0
+    </select>
+
+    <!--查询所有审核过的帖子，也就是status为1的帖子-->
+    <select id="passPicture" resultType="Picture">
+        SELECT * from tosky.picture where status=1
+    </select>
+    <!--查询全部图片-->
+    <select id="allPicture" resultType="Picture">
+        SELECT * from tosky.picture
+    </select>
+<!--    删除图片-->
+    <delete id="deletePicture" parameterType="int">
+<!--        delete from tosky.picture-->
+<!--        <where>-->
+<!--            <if test="UserId!=null">-->
+<!--                UserId=#{UserId}-->
+<!--            </if>-->
+<!--        </where>-->
+        delete from tosky.picture where  PictureID=#{PictureID}
+    </delete>
+<!--    用户根据帖子状态查询对应的帖子-->
+    <select id="statusPicture" resultType="Picture">
+        SELECT * from tosky.picture where status=#{status} and userID=#{userID} order by PictureID desc limit #{start},15
+    </select>
+<!--    分页遍历用户的所有图片-->
+    <select id="allUserPicture" resultType="Picture">
+        SELECT * from tosky.picture where userID=#{userID} order by PictureID desc limit #{start},15
+    </select>
+    <select id="allCountPicture" resultType="int">
+        select count(PictureID) from tosky.picture where userID=#{userID}
+    </select>
+
+</mapper>

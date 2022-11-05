@@ -1,0 +1,78 @@
+    body{
+    background: {
+        image:url(../../img/wzz/topback.jpeg);
+        size: cover;
+    }
+}
+.shop{
+    cursor: not-allowed;
+}
+.main{
+    h3{
+        text-align: center;
+        color: #4a94ef;
+    }
+    position: relative;
+    margin: 25vh auto;
+    width: 350px;
+    height: 230px;
+    padding:20px 30px;
+    background-color: white;
+    border-radius: 10px;
+    z-index: 100;
+    box-shadow: rgb(177, 174, 174) 0px 0px 8px;
+    .land_top{
+        width: 160px;
+        position: absolute;
+        top: -30px;
+        left: 125px;
+    }
+    input{
+        margin-bottom: 8px;
+        width: 330px;
+        height: 35px;
+        line-height: 35px;
+        border: none;
+        padding-left: 5px;
+        outline: none;
+        border-radius: 5px;
+        border:#9ac0ef solid 1px ;
+        background-color: #ecf3fb;
+        font-size: 15px;
+    }
+    a{
+        font-size: 12px;
+        text-decoration: none;
+        color: hsl(209, 78%, 66%);
+        &:hover{
+            color:hsl(209, 93%, 58%) ;
+        }
+    }
+    button{
+        margin-top: 20px;
+        width: 100%;
+        border-radius: 5px;
+        color: white;
+        font-size: 17px;
+        height: 40px;
+        border: none;
+        cursor: pointer;
+        background-color: hsl(209, 78%, 66%);
+        &:hover{
+            background-color:hsl(209, 93%, 58%) ;
+        }
+    }
+    #passcode{
+        margin: 0 0 0 10px;
+        width: 26%;
+        height: 30px;
+        font-size: 12px;
+    }
+    #eye{
+        position: absolute;
+        top:135px;
+        right:52px;
+        z-index: 100;
+        font-size: 20px;
+    }
+}

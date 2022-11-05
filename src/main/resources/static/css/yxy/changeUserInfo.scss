@@ -1,0 +1,445 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    height: 100%;
+}
+.bigBox{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    // flex-wrap: wrap;
+    margin: 2px auto;
+    max-width: 1200px;
+    // min-width: 900px;
+    .keepBefore{
+        position: fixed;
+        width: 300px;
+        height: 0px;
+        z-index: 99;
+        overflow: hidden;
+        top: 120px;
+        background-color: #fff;
+        box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+        border-radius: 10px;
+        transition: all .4s;
+        p{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 21px;
+            font-weight: 700;
+            margin-top: 30px;
+            color: #6fa1e3;
+        }
+        .choose{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 40px;
+            .quit,
+            .next{
+                width: 50%;
+                height: 40px;
+                border: none;
+                background-color: #2f70c5;
+                color: rgb(255, 255, 255);
+                margin-top: 100px;
+                border: 1px solid rgb(137, 175, 220)
+                // margin-left: 190px;
+            }
+        }
+    }
+    .passBefore{
+        position: fixed;
+        width: 300px;
+        height: 0px;
+        z-index: 99;
+        overflow: hidden;
+        top: 120px;
+        background-color: #fff;
+        box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+        border-radius: 10px;
+        transition: all .4s;
+        p{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 21px;
+            font-weight: 700;
+            margin-top: 30px;
+            color: #6fa1e3;
+        }
+        .choose{
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            height: 40px;
+            .passQuit,
+            .passNext{
+                width: 50%;
+                height: 40px;
+                border: none;
+                background-color: #2f70c5;
+                color: rgb(255, 255, 255);
+                margin-top: 100px;
+                border: 1px solid rgb(137, 175, 220)
+                // margin-left: 190px;
+            }
+        }
+    }
+    .keepSuccess{
+        position: fixed;
+        width: 300px;
+        height: 0px;
+        z-index: 99;
+        overflow: hidden;
+        top: 120px;
+        background-color: #fff;
+        box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+        border-radius: 10px;
+        transition: all .4s;
+        p{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 21px;
+            font-weight: 700;
+            margin-top: 30px;
+            color: #6fa1e3;
+        }
+        .okBtn{
+            width: 100%;
+            height: 40px;
+            border: none;
+            background-color: #2f70c5;
+            color: #fff;
+            border-radius: 5px;
+            margin-top: 100px;
+            // margin-left: 190px;
+        }
+    }
+    .changed{
+        position: relative;
+        width: 370px;
+        height: 500px;
+        box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid transparent;
+        transition: all .5s;
+        transform: scale(.7);
+        h3{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            color: rgb(140, 182, 233);
+            text-align: center;
+            font-size: 20px;
+            margin-top: 60px;
+        }
+        .userHead{
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            top: -25px;
+            left: 155px;
+            border-radius: 70px;
+            background-image: url(../../img/yxy/userHead.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        form{
+            width: 200px;
+            height: 480px;
+            margin-top: -10px;
+            margin-left: 100px;
+            span{
+                display: inline-block;
+                width: 250px;
+                height: 40px;
+                line-height: 30px;
+                color: #799fd1;
+                font-size: 18px;
+                margin-top: 15px;
+                font-weight: 700;
+            }
+            .userName,
+            .userSex,
+            .userAge,
+            .userMail{
+                display: inline-block;
+                width: 200px;
+                color: #71767c;
+                font-size: 16px;
+            }
+            .briefText{
+                width: 200px;
+                height: 50px;
+                outline: none;
+                font-size: 16px;
+                border: none;
+                margin-top: 20px;
+                border: 1px solid rgb(137, 175, 220);
+            }
+
+        }
+
+    }
+
+    .changing{
+        position: relative;
+        width: 400px;
+        height: 650px;
+        margin-top: 50px;
+        background-color: rgb(255, 255, 255);
+        box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+        border: 1px solid transparent;
+        transition: all .5s;
+        transform: scale(.7);
+        h3{
+            width: 100%;
+            height: 30px;
+            color: rgb(140, 182, 233);
+            line-height: 30px;
+            text-align: center;
+            font-size: 20px;
+            margin-top: 70px;
+        }
+        .changeHead{
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            top: -25px;
+            left: 165px;
+            border-radius: 70px;
+            background-image: url(../../img/yxy/userHead.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            overflow: hidden;
+            #changeHeadimg{
+                position:absolute;
+                width: 70px;
+                height: 70px;
+            }
+            #file{
+                top: 0;
+                position:absolute;
+                z-index:10;
+                width:70px;
+                height: 70px;
+                background-color:white;
+                opacity:0;
+                z-index: 100;
+                cursor: pointer;
+            }
+        }
+        form{
+            // display: flex;
+            // flex-direction: column;
+            // justify-content: space-between;
+            width: 200px;
+            height: 480px;
+            margin-left: 80px;
+            span{
+                display: inline-block;
+                font-size: 18px;
+                font-weight: 700;
+                color: #799fd1;
+                margin-top: 20px;
+            }
+            input{
+                width: 200px;
+                height: 30px;
+                line-height: 30px;
+                padding: 8px 20px 8px 10px;
+                background-color: rgb(244,249,251);
+                outline: none;
+                border: none;
+                border-radius: 5px;
+                margin-top: 10px;
+                font-size: 16px;
+            }
+            .inputSex{
+                display: inline-block;
+                width: 100px;
+                height: 30px;
+                outline: none;
+                border: 1px solid rgb(137, 175, 220);
+                option{
+                    display: inline-block;
+                    // width: 50px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    border: none;
+                    background-color: #fff;
+                }
+            }
+            .inputBriefText{
+                width: 200px;
+                height: 50px;
+                padding: 5px 5px;
+                outline: none;
+                margin-top: 10px;
+                font-size: 16px;
+                border: 1px solid rgb(137, 175, 220);
+            }
+            .nameFill,
+            .ageFill,
+            .mailFill{
+                display: none;
+                width: auto;
+                font-size: 12px;
+                color: red;
+                font-weight: 400;
+            }
+            .keepBtn{
+                border: none;
+                width: 100px;
+                height: 40px;
+                color: #fff;
+                // background-color: #80b0f0;
+                background-color: #6fa1e3;
+                margin-left: 60px;
+                margin-top: 20px;
+            }
+        }
+    }
+    //修改密码
+    .passBox{
+        position: relative;
+        width: 370px;
+        height: 620px;
+        transition: all .5s;
+        transform: scale(.7);
+        margin-top: 20px;
+        // transform-style: preserve-3d;
+        background-color: #fff;
+        .changePass{
+            position: absolute;
+            width: 370px;
+            height: 620px;
+            background-color: #fff;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+            background-color: rgb(255, 255, 255);
+            border: 1px solid transparent;
+            // transition: all 1s;
+            h3{
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                color: rgb(140, 182, 233);
+                text-align: center;
+                font-size: 20px;
+                margin-top: 60px;
+            }
+            .userHead{
+                position: absolute;
+                width: 70px;
+                height: 70px;
+                top: -25px;
+                left: 150px;
+                border-radius: 70px;
+                background-image: url(../../img/yxy/userHead.jpg);
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+            form{
+                width: 200px;
+                height: 480px;
+                margin-top: -10px;
+                margin-left: 80px;
+                .forgetPass{
+                    display: inline-block;
+                    width: 100%;
+                    height: 30px;
+                    cursor: pointer;
+                    text-align: center;
+                    line-height: 30px;
+                    font-size: 16px;
+                    font-weight: 400;
+                }
+                span{
+                    display: inline-block;
+                    width: 250px;
+                    height: 40px;
+                    line-height: 30px;
+                    color: #799fd1;
+                    font-size: 18px;
+                    margin-top: 15px;
+                    font-weight: 700;
+                    .fill{
+                        display: none;
+                        width: auto;
+                        font-size: 12px;
+                        color: red;
+                        font-weight: 400;
+                    }
+                }
+                input{
+                    width: 180px;
+                    height: 30px;
+                    line-height: 30px;
+                    padding: 8px 0px 8px 10px;
+                    background-color: rgb(244,249,251);
+                    outline: none;
+                    border: none;
+                    border-radius: 5px;
+                    margin-top: 5px;
+                    font-size: 16px;
+                } 
+                #inputAccount{
+                    width: 220px;
+                }
+                .newPass,
+                .surePass,
+                .oldPass{
+                    width: 170px;
+                }
+                .newPassBox,
+                .surePassBox,
+                .oldPassBox{
+                    display: flex;
+                    align-items: center;
+                    width: 230px;
+                    height: 50px;
+                    background-color: rgb(244,249,251);
+                    border-radius: 5px;
+                }
+                i{
+                    font-size: 20px;
+                    color: rgb(92, 131, 194);
+                }
+                #eyeOpen_1,
+                #eyeOpen_2,
+                #eyeOpen_3{
+                    display: none;
+                }
+                
+                .changePassBtn{
+                    border: none;
+                    width: 100px;
+                    height: 40px;
+                    color: #fff;
+                    // background-color: #80b0f0;
+                    background-color: #6fa1e3;
+                    margin-left: 50px;
+                    margin-top: 20px;
+                    cursor: pointer;
+                } 
+            } 
+        }
+    }
+    
+}
+
+@media screen and (max-width:1215px){
+    .bigBox{
+        flex-wrap: wrap;
+    }
+}

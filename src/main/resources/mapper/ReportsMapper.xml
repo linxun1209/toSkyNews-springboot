@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.ReportsMapper">
+    <!--添加举报-->
+    <insert id="addReport" parameterType="Reports">
+        insert into tosky.reports(kind,contact,opinion,userID,postsID,times)
+        values(#{kind},#{contact},#{opinion},#{userID},#{postsID},#{times})
+    </insert>
+
+    <!--管理员查询分页所有举报-->
+    <select id="showReports" resultType="Reports">
+        select * from tosky.reports limit #{column},#{total}
+    </select>
+
+    <!--查询所有举报(返回一共多少条举报)-->
+    <select id="ReportsCount" resultType="int">
+        select count(*) from tosky.reports
+    </select>
+    <!--展示个人反馈-->
+    <select id="showPortsById" resultType="Reports">
+        select * from tosky.reports where userID=#{userID}
+    </select>
+    <!--    查询对举报进行处理通过的文章，也就是status为1的帖子-->
+    <select id="passReports" resultType="Reports">
+        SELECT * from tosky.reports where status=1
+    </select>
+    <!--    查询未对举报进行出来的文章，也就是status为0的帖子-->
+    <select id="downReports" resultType="Reports">
+        SELECT * from tosky.reports where status=0
+    </select>
+    <!--    查询未对举报进行出来的文章，也就是status为0的帖子-->
+    <select id="disPassReports" resultType="Reports">
+        SELECT * from tosky.reports where status=-1
+    </select>
+    <update id="savePassPosts" parameterType="int">
+        update tosky.reports
+        set status = 1
+        where postsID = #{postsID}
+    </update>
+    <update id="disSavePassPosts" parameterType="int">
+        update tosky.reports
+        set status = -1
+        where postsID = #{postsID}
+    </update>
+    <!--删除指定举报-->
+    <delete id="deleteReports" parameterType="int">
+        delete from tosky.reports where reportID=#{reportID}
+    </delete>
+
+
+
+    <!--    &lt;!&ndash;展示个人举报&ndash;&gt;-->
+    <!--    <select id="queryUserFeedback" resultType="Feedback">-->
+    <!--        select * from tosky.feedback where userID=#{userID}-->
+    <!--    </select>-->
+
+    <!--&lt;!&ndash;    管理员针对用户的举报作出反馈&ndash;&gt;-->
+    <!--    <update id="addReport" >-->
+    <!--        update tosky.reports set content=#{content} where reportID=#{reportID}-->
+    <!--    </update>-->
+    <!--    <insert id="addReport" parameterType="Reports">-->
+    <!--        insert into tosky.reports(kind,contant,opinion,userID,postsID,times)-->
+    <!--        value (#{kind},#{contant},#{opinion},#{userID},#{postsID},#{times})-->
+    <!--    </insert>-->
+    <!--    &lt;!&ndash;管理员反馈->管理员反馈managerOr-》1&ndash;&gt;-->
+    <!--    <update id="updateManagerToOne" parameterType="int">-->
+    <!--        update tosky.feedback-->
+    <!--        set managerOr=1-->
+    <!--        where feedbackID=#{feedbackID}-->
+    <!--    </update>-->
+
+    <!--    &lt;!&ndash;管理员举报->用户未接收到反馈userOr-》-1&ndash;&gt;-->
+    <!--    <update id="updateManagerToToOne" parameterType="int">-->
+    <!--        update tosky.feedback-->
+    <!--        set userOr=-1-->
+    <!--        where feedbackID=#{feedbackID}-->
+    <!--    </update>-->
+
+    <!--    &lt;!&ndash;用户查看管理员举报-》用户接收到反馈userOr-》1&ndash;&gt;-->
+    <!--    <update id="updateUserToOne" parameterType="int">-->
+    <!--        update tosky.feedback-->
+    <!--        set userOr=1-->
+    <!--        where feedbackID=#{feedbackID}-->
+    <!--    </update>-->
+
+    <!--    &lt;!&ndash;用户是否已经查看管理员回复&ndash;&gt;-->
+    <!--    <select id="queryManagerToUser" resultType="Feedback">-->
+    <!--        select * from tosky.feedback where feedbackID=#{feedbackID} and userOr = 1-->
+    <!--    </select>-->
+    <!--    &lt;!&ndash;删除指定举报&ndash;&gt;-->
+    <!--    <delete id="deleteFeedback" parameterType="int">-->
+    <!--        delete from tosky.feedback where feedbackID=#{feedbackID}-->
+    <!--    </delete>-->
+</mapper>

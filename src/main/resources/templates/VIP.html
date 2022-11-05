@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>会员</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .VIP {
+            width: 100%;
+            height: 700px;
+        }
+
+        .VIP_wrap {
+            position: relative;
+            width: 1243px;
+            height: 700px;
+            margin: 0 auto;
+        }
+        .VIP_left {
+            position: absolute;
+            top: 0px;
+            left: 50px;
+            width: 510px;
+            height: 600px;
+            border: 3px solid #fff;
+            border-radius: 20px;
+        }
+        .huiyuan {
+            width: 510px;
+            height: 150px;
+            font-size: 30px;
+            border-radius: 20px 20px 0px 0px;
+            text-align: center;
+            line-height: 150px;
+            background-size: cover;
+            background-image: url('img/-zyt/QQ截图20220503171123.png');
+        }
+        .huiyuan_pic {
+            width: 60px;
+            height: 60px;
+        }
+        .VIP_left_tu {
+            margin-left: 20px;
+            margin-right: 100px;
+            vertical-align: middle;
+            width: 60px;
+            height: 60px;
+        }
+        #VIP_left_opation {
+            width: 100%;
+            height: 136px;
+            color: #fff;
+            line-height: 136px;
+            font-size: 20px;
+            cursor: pointer;
+            border-bottom: 2px solid rgba(255,255,255,.8) ;
+            background-color: rgba(254, 176, 4,.9);
+
+        }
+        .VIP_right {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            width: 640px;
+            height: 330px;
+            border-radius: 20px 20px 0px 0px;
+            background-color: rgb(254, 176, 4);
+            box-shadow: 0px 0px 2px 0px rgba(254, 176, 4, .6);
+        }
+
+        .VIP_ye {
+            margin-left: 70px;
+            margin-top: 20px;
+            width: 500px;
+            height: 200px;
+            border: 3px solid #fff;
+        }
+
+        .VIP_ye_pic {
+            box-shadow: 0px 0px 2px 2px rgb(255, 255, 255, .5);
+            width: 90px;
+            height: 60px;
+            margin-top: 5px;
+            margin-left: 5px;
+        }
+
+        .VIP_ye_text {
+            color: #fff;
+            width: 280px;
+            height: 80px;
+            text-align: center;
+            line-height: 80px;
+            font-size: 36px;
+            box-shadow: 0px 0px 2px 2px rgb(255 255 255 / 70%);
+            margin-left: 130px;
+            border: 2px solid rgb(255, 255, 255, .9);
+        }
+
+        .VIP_surprise {
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            margin-top: 13px;
+            margin-left: 20px;
+        }
+
+        .VIP_bottom {
+            position: absolute;
+            top: 330px;
+            right: 0px;
+            width: 640px;
+            height: 374px;
+            background-color: rgb(244, 244, 244);
+        }
+
+        .VIP_jianjie {
+            position: absolute;
+            top: 260px;
+            right: 65px;
+            width: 500px;
+            height: 120px;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        .VIP_jianjie_text {
+            width: 250px;
+            height: 20px;
+            margin-left: 70px;
+            margin-top: 20px;
+            line-height: 40px;
+        }
+
+        #kaihuiyuan {
+            color: rgb(253, 170, 23);
+            font-size: 22px;
+        }
+
+        .VIP_more {
+            position: absolute;
+            top: 430px;
+            right: 300px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #666;
+        }
+
+        .deep_VIP {
+            position: absolute;
+            top: 490px;
+            right: 65px;
+            width: 500px;
+            height: 120px;
+            border-radius: 10px;
+            background-color: #fff
+        }
+        .deep_wrap_tu {
+            position: absolute;
+            top: 20px;
+            right: 370px;
+            width: 70px;
+            height: 55px;
+        }
+        .deep_wrap_t {
+            margin-top: 90px;
+            margin-left: 65px;
+        }
+        .deep_wrap_text {
+            position: absolute;
+            top: 20px;
+            right: 100px;
+            width: 167px;
+            height: 105px;
+            font-size: 12px;
+
+        }
+        .deep_wrap_text_a {
+            color: #666;
+            height: 30px;
+        }
+        .start_VIP {
+            position: absolute;
+            top: 640px;
+            right: 135px;
+            width: 350px;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #fff;
+            font-weight: 700;
+            border-radius: 10px;
+            background-color: rgb(255,155,35);
+        }
+
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="VIP">
+        <div class="VIP_wrap">
+            <div class="VIP_left">
+                <div class="huiyuan">会  员</div>
+                <div class="VIP_instruction" id="VIP_left_opation"> 
+                    <img src="img/zyt/QQ截图20220503001534.png" class="VIP_left_tu">会员介绍</div>
+                <div class="VIP_deal" id="VIP_left_opation"> 
+                    <img src="img/zyt/QQ截图20220503001534.png" class="VIP_left_tu">会员制度</div>
+                <div class="VIP_apply" id="VIP_left_opation">
+                    <img src="img/zyt/QQ截图20220503001534.png" class="VIP_left_tu">会员申请</div>
+                <div class="VIP_cancle" id="VIP_left_opation"> 
+                    <img src="img/zyt/QQ截图20220503001534.png" class="VIP_left_tu">会员注销</div>
+            </div>
+            <div class="VIP_right">
+                <div class="VIP_ye">
+                    <img src="img/zyt/QQ截图20220503001534.png" class="VIP_ye_pic">
+                    <div class="VIP_ye_text">普通会员</div>
+                    <div class="VIP_surprise">充值多多，惊喜多多</div>
+                </div>
+                <div class="VIP_bottom"></div>
+                <div class="VIP_jianjie">
+                    <div class="VIP_jianjie_text" id="kaihuiyuan">开通超级会员</div>
+                    <div class="VIP_jianjie_text">每天无限打招呼，还可免费查看</div>
+                </div>
+                <div class="VIP_more">更多特权</div>
+                <div class="deep_VIP">
+                    <span class="deep_wrap_pic">
+                        <img src="img/zyt/QQ截图20220503150348.png" alt="" class="deep_wrap_tu">
+                        <div class="deep_wrap_t">超级会员</div>
+                    </span>
+                    <span class="deep_wrap_text">
+                        <div class="deep_wrap_text_a">1.每天无限打招呼与回复信息</div>
+                        <div class="deep_wrap_text_a">2.专享旅游达人栏目</div>
+                        <div class="deep_wrap_text_a">3.游玩聘请栏目免查看</div>
+                    </span>
+                </div>
+                <div class="start_VIP">立即开通</div>
+            </div>
+        </div>
+    </div>
+    <script src="js/zyt/js/VIP.js"></script>
+    <script src="js/jquery-3.6.0.js"></script>
+</body>
+
+</html>

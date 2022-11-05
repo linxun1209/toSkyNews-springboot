@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>草稿箱</title>
+    <link rel="stylesheet" href="css/yxy/draftsPage.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+</head>
+<body>
+<!-- 弹窗 -->
+<div class="chooseCover">
+    <div class="tip">
+        <p class="tipText">确定要删除吗</p>
+        <div class="choose">
+            <button class="tipNo">取消</button>
+            <button class="tipOk">确定</button>
+        </div>
+    </div>
+</div>
+<div class="sureCover">
+    <div class="successTip">
+        <p class="successText">删除成功！</p>
+        <button class="successOk">确定</button>
+    </div>
+</div>
+    <div class="nav">
+        <i class="fa fa-gg" aria-hidden="true"></i>未来草稿箱<i class="fa fa-gg" aria-hidden="true"></i> 
+        <button id="back_history" onclick="window.history.go(-1);">
+            <i class="fa fa-reply-all" aria-hidden="true"></i>
+        <btton>
+    </div>
+        <div class="content">
+            <div class="handle">
+                <div class="findBox">
+                    <input class="findDraft" placeholder="请输入草稿标题"/>
+                    <button class="findBtn">搜索</button>
+                </div>
+                <div class="btn_1">
+                    <button class="allChoose">全选</button>
+                    <button class="cancelAll">取消全选</button>
+                    <button class="deleteChoose">删除</button>
+                    <button class="massDelete">批量删除</button>
+                    <button class="reset">重置</button>
+                </div>
+                <div class="btn_2">
+                    <button class="findAllChoose">全选</button>
+                    <button class="findCancelAll">取消全选</button>
+                    <button class="findDeleteChoose">删除</button>
+                    <button class="findMassDelete">批量删除</button>
+                    <button class="findReset">重置</button>
+                    <button class="lastInfo">返回</button>
+                </div>
+            </div>
+            <div class="empty">
+                <div class="emptyBox">
+                    <i class="fa fa-wpforms" aria-hidden="true"></i>
+                    <p>暂无草稿</p>
+                </div>
+            </div>
+            <ul class="list"></ul>
+            <ul class="find"></ul>
+            <div class="page">
+                <button class="lastPage"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+                <span class="pageNum">1</span>
+                <span class="line">/</span>
+                <span class="allPage">0</span>
+                <button class="nextPage"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+                <div class="searchPageBox">
+                    <input class="searchPage" type="text" placeholder="请输入页数"/>
+                    <button class="sure">前往</button>
+                </div>
+            </div>
+            <div class="findPage">
+                <button class="findLastPage"><i class="fa fa-angle-double-left" aria-hidden="true"></i></button>
+                <span class="findPageNum">1</span>
+                <span class="line">/</span>
+                <span class="findAllPage">0</span>
+                <button class="findNextPage"><i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+                <div class="findSearchPageBox">
+                    <input class="findSearchPage" type="text" placeholder="请输入页数"/>
+                    <button class="findSure">前往</button>
+                </div>
+            </div>
+        </div>
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/yxy/findDrafts.js"></script>
+    <script src="js/yxy/draftsPage.js"></script>
+</body>
+</html>

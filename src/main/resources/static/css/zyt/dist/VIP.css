@@ -1,0 +1,97 @@
+.VIP {
+  width: 100%;
+  height: 580px;
+}
+
+.VIP_wrap {
+  position: relative;
+  margin: 0 auto;
+  width: 1263px;
+  height: 580px;
+}
+
+.VIP_pic {
+  width: 100%;
+  height: 400px;
+  z-index: -1;
+  background-color: #b0cfe6;
+}
+
+.VIP_tu {
+  width: 92px;
+  height: 92px;
+  border-radius: 80px;
+  z-index: -1;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+.VIP_user_pic {
+  position: absolute;
+  top: 40px;
+  left: 320px;
+  width: 400px;
+  height: 200px;
+  z-index: 2;
+  vertical-align: middle;
+}
+
+.container {
+  margin-left: 340px;
+}
+
+.VIP_user_tu {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  margin-left: 540px;
+  border-radius: 40px;
+}
+
+.VIP_user_name {
+  width: 150px;
+  margin-top: 115px;
+  margin-left: 360px;
+  color: pink;
+  vertical-align: middle;
+}
+
+.VIP_user_label {
+  width: 150px;
+  margin-left: 360px;
+  margin-top: 10px;
+  color: pink;
+  vertical-align: middle;
+}
+
+.VIP_contain {
+  width: 100%;
+  height: 80px;
+}
+
+.VIP_contain_top {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  color: #fff;
+  background-color: powderblue;
+}
+
+.made_instruction {
+  width: 33.3%;
+  background-color: paleturquoise;
+}
+
+.made_apply {
+  width: 33.33%;
+  background-color: #f3dfae;
+}
+
+.made_black {
+  width: 33.33%;
+  background-color: papayawhip;
+}

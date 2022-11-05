@@ -1,0 +1,176 @@
+.allPage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.allPage .tip {
+  position: fixed;
+  top: 0;
+  width: 300px;
+  height: 0px;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+  border-radius: 10px;
+  transition: all .4s;
+  z-index: 99;
+  overflow: hidden;
+}
+
+.allPage .tip p {
+  width: 90%;
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 5%;
+  color: #6fa1e3;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.allPage .tip button {
+  width: 100%;
+  height: 40px;
+  border: none;
+  color: #fff;
+  margin-top: 82px;
+  background-color: #2f70c5;
+  border: 1px solid #89afdc;
+}
+
+.allPage .findPass {
+  position: relative;
+  width: 370px;
+  height: 600px;
+  box-shadow: 0 10px 30px rgba(175, 169, 169, 0.4);
+  background-color: white;
+  border: 1px solid transparent;
+  background-color: #fff;
+  margin-top: 30px;
+}
+
+.allPage .findPass h3 {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  color: #8cb6e9;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 60px;
+}
+
+.allPage .findPass .userHead {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: -25px;
+  left: 150px;
+  border-radius: 70px;
+  background-image: url(../../img/yxy/head.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.allPage .findPass form {
+  width: 290px;
+  height: 380px;
+  margin-top: -30px;
+  margin-left: 80px;
+}
+
+.allPage .findPass form span {
+  display: inline-block;
+  width: 250px;
+  height: 40px;
+  line-height: 30px;
+  color: #799fd1;
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: 700;
+}
+
+.allPage .findPass form span #accountTip,
+.allPage .findPass form span #newPassTip,
+.allPage .findPass form span #sureTip,
+.allPage .findPass form span .mailTip {
+  display: none;
+  width: auto;
+  font-size: 12px;
+  color: red;
+  font-weight: 400;
+}
+
+.allPage .findPass form input {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  padding: 5px 20px 5px 10px;
+  background-color: #f4f9fb;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.allPage .findPass form .newPass,
+.allPage .findPass form .surePass {
+  width: 170px;
+}
+
+.allPage .findPass form .newPassBox,
+.allPage .findPass form .surePassBox {
+  display: flex;
+  align-items: center;
+  width: 230px;
+  height: 40px;
+  background-color: #f4f9fb;
+  border-radius: 5px;
+}
+
+.allPage .findPass form i {
+  font-size: 20px;
+  color: #5c83c2;
+}
+
+.allPage .findPass form #eyeOpen_1,
+.allPage .findPass form #eyeOpen_2 {
+  display: none;
+}
+
+.allPage .findPass form .inputNum {
+  display: inline-block;
+  width: 100px;
+  height: 30px;
+  margin-top: 30px;
+  padding: 2px 2px 2px 5px;
+  outline: medium;
+  border: none;
+  background-color: #f4f9fb;
+  border-radius: 5px;
+}
+
+.allPage .findPass form .getNum {
+  display: inline-block;
+  width: auto;
+  padding: 0 7px;
+  height: 30px;
+  background-color: #5478b1;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  margin-left: 30px;
+  cursor: pointer;
+}
+
+.allPage .findPass form .newPassBtn {
+  border: none;
+  width: 100px;
+  height: 40px;
+  color: #fff;
+  background-color: #6fa1e3;
+  margin-left: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+}

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.CollectionMapper">
+
+    <!-- 注意写好功能后，把mapper绑定到mybatis-config.xml中去 -->
+
+    <!--收藏（添加）-->
+    <insert id="addCollection" parameterType="Collections">
+      insert into tosky.collections(postsID,userID)
+      values (#{postsID}, #{userID})
+   </insert>
+
+    <!--展示某个用户下的所有收藏-->
+    <select id="queryCollectionByUserID" resultType="Collections">
+      SELECT * from tosky.collections
+     <if test="userID !=null">
+         where
+         userID=#{userID}
+            order by collectionID desc
+     </if>
+   </select>
+
+    <!--用户取消收藏(删除)-->
+    <delete id="deleteCollectionById" parameterType="Collections">
+      delete from tosky.collections
+     where
+     postsID=#{postsID}
+      and userID=#{userID}
+   </delete>
+
+    <!--判断该用户是否已经收藏过此帖子-->
+    <select id="queryCollection" resultType="Collections">
+        select * from tosky.collections
+        <where>
+        <if test="postsID !=null">
+        postsID=#{postsID}
+        </if>
+        <if test="userID !=null">
+        and userID=#{userID}
+        </if>
+        </where>
+    </select>
+
+    <!--批量删除所收藏帖子-->
+    <delete id="deleteBatchCollections">
+        delete from tosky.collections
+    where
+        postsID=#{postsID}
+        and userID=#{userID}
+    </delete>
+
+    <!--收藏（添加）之后在messages中增加一条数据表示此用户收藏的记录-->
+    <insert id="setMessages" parameterType="Messages">
+        insert into tosky.messages(reside,postsName,userID,authorID,times,postsID)
+      values (#{reside}, #{postsName},#{userID},#{authorID},#{times},#{postsID})
+    </insert>
+
+    <!--删除点赞记录-->
+    <delete id="deleteAlikeWrite" parameterType="int">
+      delete from tosky.alike
+     where
+     postsID=#{postsID}
+   </delete>
+
+    <!--删除收藏记录-->
+    <delete id="deleteCollectionWrite" parameterType="int">
+      delete from tosky.collections
+     where
+     postsID=#{postsID}
+   </delete>
+
+    <!--删除评论记录-->
+    <delete id="deleteCommentWrite" parameterType="int">
+      delete from tosky.comment
+     where
+     postsID=#{postsID}
+   </delete>
+</mapper>

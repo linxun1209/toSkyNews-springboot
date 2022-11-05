@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.ManagerMapper">
+
+    <!-- 注意写好功能后，把mapper绑定到mybatis-config。xml中去 -->
+
+    <!--增加一个user-->
+    <insert id="addUser" parameterType="User">
+      insert into tosky.user(username,password,telephone,age,sex,signature,picture,account)
+      values (#{username}, #{password},#{telephone},#{age},#{sex},#{signature},#{picture},#{account})
+   </insert>
+
+    <!--根据id删除一个user-->
+    <delete id="deleteUserById" parameterType="int">
+      delete from tosky.user where userID=#{userID}
+   </delete>
+
+
+    <!--删除注销用户发布的帖子-->
+    <delete id="deletePostsByUser" parameterType="int">
+      delete from tosky.posts where reside=#{reside}
+   </delete>
+
+
+    <!--删除注销用户的收藏-->
+    <delete id="deleteCollectionByUser" parameterType="int">
+      delete from tosky.collections where userID=#{userID}
+   </delete>
+
+
+
+    <!--修改user-->
+    <update id="updateUser" parameterType="User">
+      update tosky.user
+      set username = #{username},password = #{password},telephone = #{telephone},age=#{age},sex=#{sex},signature=#{signature},picture=#{picture}
+      where userID = #{userID}
+   </update>
+
+    <!--根据id查询,返回一个user-->
+    <select id="queryUserById" resultType="User">
+      select * from tosky.user
+      <if test="userID!=null">
+        where userID = #{userID}
+      </if>
+   </select>
+
+    <!--查询全部user-->
+    <select id="queryAllUser" resultType="User">
+      SELECT * from tosky.user
+   </select>
+
+    <!--管理员登录-->
+    <select id="select" resultType="Manager">
+      select * from tosky.manager
+      <if test="managerName!=null">
+        where managerName = #{managerName}
+      </if>
+   </select>
+    <!--根据名字模糊查询用户-->
+    <select id="queryVagueUser" parameterType="String" resultType="User">
+        select * from tosky.user
+        <if test="thing!=null">
+        where username like concat('%',#{thing},'%')
+        </if>
+    </select>
+
+    <!--根据名字查询用户-->
+    <select id="queryUserByName" resultType="User">
+        select * from tosky.user
+        <if test="username !=null">
+        where username=#{username}
+        </if>
+    </select>
+
+    <!--通过分页查询用户-->
+    <select id="queryPagingUser" resultType="User">
+        SELECT * from tosky.user
+        <if test="column!=null and total!=null">
+        limit #{column},#{total}
+        </if>
+    </select>
+
+    <!--返回user表里面的用户个数-->
+    <select id="queryUserCount" resultType="int">
+        select count(*) from user
+    </select>
+
+    <!--取消关注-->
+    <delete id="deleteFocus" parameterType="int">
+        delete from tosky.focus where focusID=#{focusID}
+    </delete>
+
+    <!--取消关注-->
+    <delete id="deleteFans" parameterType="int">
+        delete from tosky.focus where fansID=#{fansID}
+    </delete>
+
+    <!--通过用户id返回其发布的所有帖子id-->
+    <select id="queryPostsID" resultType="Posts">
+        select postsID from tosky.posts
+        <if test="reside!=null">
+        where reside=#{reside}
+        </if>
+    </select>
+
+    <!--根据帖子id删除收藏表里面的帖子-->
+    <delete id="deleteCollectionByPostsID" parameterType="int">
+      delete from tosky.collections where postsID=#{postsID}
+   </delete>
+
+    <!--增加一个manager-->
+    <insert id="addManager" parameterType="Manager">
+      insert into tosky.manager(managerName,password)
+      values (#{managerName}, #{password})
+   </insert>
+
+    <!--根据名字查询用户-->
+    <select id="queryManagerByName" resultType="Manager">
+        select * from tosky.manager
+        <if test="managerName!=null">
+        where managerName=#{managerName}
+        </if>
+    </select>
+
+    <!--根据makerID删除comment-->
+    <delete id="deleteCommentByMakerID" parameterType="int">
+      delete from tosky.comment where makerID=#{makerID}
+   </delete>
+
+    <!--根据makerID删除reviews-->
+    <delete id="deleteReviewsByMakerID" parameterType="int">
+      delete from tosky.reviews where makerID=#{makerID}
+   </delete>
+
+    <!--根据authorID删除messages-->
+    <delete id="deleteMessagesByAuthorID" parameterType="int">
+      delete from tosky.messages where authorID=#{authorID}
+   </delete>
+</mapper>

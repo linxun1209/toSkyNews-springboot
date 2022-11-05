@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.skynews.dao.PostsMapper">
+
+    <!-- 注意写好功能后，把mapper绑定到mybatis-config。xml中去 -->
+    <!--查询全部posts-->
+    <select id="queryAllPosts" resultType="Posts">
+      SELECT * from tosky.posts where status != -2 limit 0,140
+   </select>
+
+    <!--根据id删除一个posts-->
+    <delete id="deletePostsById" parameterType="int">
+      delete from tosky.posts where postsID=#{postsID}
+   </delete>
+
+    <!--将帖子状态更改为通过-->
+    <update id="auditing" parameterType="int">
+      update tosky.posts
+      set status = 1
+      <if test="postsID!=null">
+      where postsID = #{postsID}
+      </if>
+   </update>
+    <!--将帖子状态更改为未通过-->
+    <update id="disAuditing" parameterType="int">
+        update tosky.posts
+        set status = -1
+        where postsID = #{postsID}
+    </update>
+
+    <!--根据用户id查询对应的帖子    &lt;&gt;-->
+    <select id="queryPostsByUserID" resultType="Posts">
+        SELECT * from tosky.posts where reside=#{reside} and status !=-2 order by postsID desc
+    </select>
+    <!--模糊查询-->
+    <select id="vagueQuery" resultType="Posts">
+        select * from tosky.posts where status=1
+        <if test="thing!=null and column!=null and total!=null">
+        and postsName like concat('%',#{thing},'%') limit #{column},#{total}
+        </if>
+    </select>
+
+
+    <!--模糊查询(返回此片段模糊查询到的条数)-->
+    <select id="queryVagueCountAll" resultType="int">
+        select count(*) from tosky.posts where status=1
+        <if test="thing!=null">
+        and postsName like concat('%',#{thing},'%')
+        </if>
+    </select>
+
+    <!--查询未审核的帖子，也就是status为0的帖子-->
+    <select id="pendingPosts" resultType="Posts">
+        SELECT * from tosky.posts where status=0
+    </select>
+
+    <!--根据帖子标签查询所有相同标签的帖子(模糊查询)-->
+    <select id="querySameLabel" resultType="Posts">
+        select * from tosky.posts where postsName like concat('%',#{thing},'%') and label=#{label} and status=1 limit #{column},#{total}
+    </select>
+
+    <!--根据帖子标签查询所有相同标签的帖子-->
+    <select id="querySameLabelBy" resultType="Posts">
+        select * from tosky.posts
+        <where>
+        <if test="label!=null">
+        label=#{label}
+        </if>
+        <if test="column!=null and total!=null">
+        and status=1 limit #{column},#{total}
+        </if>
+        </where>
+    </select>
+
+    <!--根据帖子标签查询所有相同标签且审核通过的帖子（返回查询到总共的个数）-->
+    <select id="querySameLabelCount" resultType="int">
+        SELECT count(*) from tosky.posts where status=1
+        <if test="label!=null">
+        and label=#{label}
+        </if>
+    </select>
+
+    <!--根据帖子标签查询所有相同标签且审核通过的帖子（返回查询到总共的个数）(模糊查询)-->
+    <select id="queryVagueSameLabelCount" resultType="int">
+        SELECT count(*) from tosky.posts
+        <where>
+        <if test="thing!=null">
+        postsName like concat('%',#{thing},'%')
+        </if>
+        <if test="label!=null">
+        and label=#{label} and status=1
+        </if>
+        </where>
+    </select>
+
+    <!--查询所有审核过的帖子，也就是status为1的帖子-->
+    <select id="passPosts" resultType="Posts">
+        SELECT * from tosky.posts where status=1
+    </select>
+
+    <!--用户修改帖子信息-->
+    <update id="updatePosts" parameterType="Posts">
+      update tosky.posts
+      set postsName = #{postsName},label = #{label},content = #{content},contentA = #{contentA},picture=#{picture}
+      where postsID = #{postsID}
+   </update>
+
+    <!--模糊查询用户个人作品-->
+    <select id="vagueQueryPerson" resultType="Posts">
+        select * from tosky.posts
+        <where>
+        <if test="reside!=null">
+        reside=#{reside}
+        </if>
+        <if test="thing!=null">
+        and postsName like concat('%',#{thing},'%') order by postsID desc
+        </if>
+        </where>
+    </select>
+
+    <!--发布帖子-->
+    <insert id="addPosts" parameterType="Posts">
+      insert into tosky.posts(postsName,label,reside,content,contentA,picture,status)
+      values (#{postsName}, #{label},#{reside},#{content},#{contentA},#{picture},#{status})
+   </insert>
+
+    <!--通过帖子id查询帖子-->
+    <select id="queryPostsById" resultType="Posts">
+        SELECT * from tosky.posts where status!=-2
+        <if test="postsID">
+        and postsID=#{postsID}
+        </if>
+    </select>
+
+    <!--用户收藏帖子（即将用户id存collectionID中）-->
+    <update id="collectionPosts">
+      update tosky.posts
+      set collectionID=#{collectionID}
+      where postsID = #{postsID}
+   </update>
+
+    <!--展示某一个用户所有的收藏-->
+    <select id="showAllCollection" resultType="Posts">
+        select * from tosky.posts
+        <if test="collectionID!=null">
+        where collectionID=#{collectionID}
+        </if>
+    </select>
+
+    <!--通过分页查询帖子-->
+    <select id="queryPaging" resultType="Posts">
+        SELECT * from tosky.posts
+        <if test="column!=null and total!=null">
+        limit #{column},#{total}
+        </if>
+    </select>
+
+    <!--帖子浏览量-->
+    <update id="setBrowse" parameterType="int">
+      update tosky.posts
+      set browse=browse + 1
+      where postsID = #{postsID}
+   </update>
+
+    <!--点赞数降序查询返回前三十-->
+    <select id="queryAlikeDesc" resultType="Posts">
+        SELECT * from tosky.posts order by alike desc
+        limit #{column},#{total}
+    </select>
+
+    <!--根据用户id获取用户的所有点赞数-->
+    <select id="querySumAlike" resultType="int">
+        select sum(alike) from tosky.posts
+        <if test="reside">
+        where reside=#{reside}
+        </if>
+    </select>
+
+    <!--通过分页查询帖子-->
+    <select id="queryPagingPosts" resultType="Posts">
+        SELECT * from tosky.posts where status!=-2 order by postsID desc
+        <if test="column!=null and total!=null">
+        limit #{column},#{total}
+        </if>
+    </select>
+
+    <!--返回posts表里面的帖子个数-->
+    <select id="queryPostsCount" resultType="int">
+        select count(*) from posts
+    </select>
+    <!--    插入帖子图片-->
+    <update id="upPostImg" parameterType="Posts">
+        insert into tosky.posts(postsName,label,reside,content,contentA,picture,cover,status)
+        values (#{postsName}, #{label},#{reside},#{content},#{contentA},#{picture},#{cover},#{status})
+    </update>
+
+    <!--用户代封面的修改帖子信息-->
+    <update id="changePosts" parameterType="Posts">
+        update tosky.posts
+        set postsName = #{postsName},label = #{label},content = #{content},contentA = #{contentA},picture=#{picture},cover=#{cover}
+        where postsID = #{postsID}
+    </update>
+
+    <!--    通过文章id查询文章所有信息-->
+    <select id="getPost" resultType="Posts">
+        select * from tosky.posts
+        <if test="postsID!=null">
+        where postsID=#{postsID}
+        </if>
+    </select>
+    <select id="findUser"  resultType="Posts">
+        SELECT * FROM tosky.posts
+    </select>
+    <!-- 获取帖子list 这里的  #{start} 中 start 必须要与 @Param("start") 中的 start 名字一样 否则无法传入参数   #{count}同理-->
+    <select id="getList" resultType="Posts">
+        select * from tosky.posts
+        <where>
+        <if test="reside!=null">
+        reside=#{reside} order by postsID asc
+        </if>
+        <if test="start!=null and count!=null">
+        limit #{start},#{count}
+        </if>
+        </where>
+    </select>
+    <!-- 获取用户总数 -->
+    <select id="getTotal"  resultType="Integer">
+        SELECT count(*) FROM tosky.posts
+    </select>
+
+    <!--根据postsID删除信息-->
+    <delete id="deleteAllMessagesByPostsID" parameterType="int">
+      delete from tosky.messages where postsID=#{postsID}
+   </delete>
+    <select id="getPostByID" resultType="Posts">
+        select * from tosky.posts where postsID=#{postsID}
+    </select>
+
+</mapper>

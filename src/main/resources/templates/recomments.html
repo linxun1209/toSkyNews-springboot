@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>未来头条</title>
+    <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="css/zyt/recomments.css">
+    <link rel="stylesheet" href="css/wzz/new.min.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="js/jquery-3.6.0.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen"
+        href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
+</head>
+
+<body>
+    <!-- 顶部 -->
+    <div id="all_top">
+        <div class="container2">
+            <div class="column_sort">
+                <a class="column_sort_a" href="javascript:;">综合</a>
+                <a class="column_sort_a" href="javascript:;">科学</a>
+                <a class="column_sort_a" href="javascript:;">体育</a>
+                <a class="column_sort_a" href="javascript:;">军事</a>
+                <a class="column_sort_a" href="javascript:;">游戏</a>
+                <a class="column_sort_a" href="javascript:;">娱乐</a>
+                <a class="column_sort_a" href="javascript:;">其他</a>
+            </div>
+            <div class="top_find">
+                <input type="text" class="food_find_input" placeholder=" 请输入您要寻找的文章与描述">
+                <a href="javascript:;" class="food_find_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+            </div>
+            <button id="back_history" onclick="window.history.go(-1);">
+                <i class="fa fa-reply-all" aria-hidden="true"></i>
+            </button>
+        </div>
+    </div>
+    <div class="recomments1">
+        <div class="recomments1_wrap container1">
+            <!-- 左侧边栏 -->
+            <div class="left_nav">
+                <div class="recomments1_left">
+                    <a href="javascript:;" class="recomments1_left_li" id="reco_left1">
+                        <i class="fa fa-thumbs-up" aria-hidden="true" id="like_praise"></i>
+                        <div class="left_nav_text">0</div>
+                    </a>
+                    <a href="javascript:;" class="recomments1_left_li" id="store_tu_bs">
+                        <i class="fa fa-heart-o" aria-hidden="true" id="heart"></i>
+                        <div class="store_text">收藏</div>
+                    </a>
+                    <a href="javascript:;" onclick="sharea()" class="recomments1_left_li" id="reco_left4">
+                        <i class="fa fa-share-alt" aria-hidden="true" id="share"></i>
+                        <div class="share_text">分享</div>
+                    </a>
+                </div>
+            </div>
+            <div class="showcommit">
+                <img src="img/zyt/user.jpeg" alt="" class="user_img remark_content_user">
+                <button class="showcommit_tosay">评论</button>
+                <textarea name="" id="showcommit_area" placeholder="发表一条友善的评论..."></textarea>
+            </div>
+            <!-- 评论的隐藏部分 -->
+            <div class="remark_hide">
+                <div class="remark_hide_wrap">
+                    <div class="cha">X</div>
+                    <div class="remark_hide_wrap_ul">
+                        <div class="remark_hide_li1">
+                            <img src="img/zyt/user.jpeg" alt="" class="remark_content_user">
+                            <div class="recos1_remark_content_div1">请先 <a href="#" class="remark_hide_login">登录</a>
+                                后发表评论~</div>
+                        </div>
+                        <div class="same_remark">
+                            <!-- <li class="remark_hide_li"> -->
+                            <!-- <img src="img/zyt/user.jpeg" alt="" class="remark_content_user"> -->
+                            <!-- <span class="remark_content_username">用户名</span> -->
+                            <span class="remark_hide_like"></span>
+                            <!-- <div class="remark_hide_like_context"></div> -->
+                            <!-- </li> -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- 分享的隐藏部分 -->
+            <div class="shares_hide">
+                <div class="shares_hide_wrap">
+                    <ul class="shares_hide_ul">
+                        <li class="shares_hide_li">
+                            <i class="fa fa-link" aria-hidden="true"></i>
+                            <span class="shares_hide_li_text">复制链接</span>
+                        </li>
+                        <li class="shares_hide_li">
+                            <i class="fa fa-weixin" aria-hidden="true"></i>
+                            <span class="shares_hide_li_text" id="weixin">微信</span>
+                        </li>
+                        <li class="shares_hide_li">
+                            <i class="fa fa-weibo" aria-hidden="true"></i>
+                            <span class="shares_hide_li_text">新浪微博</span>
+                        </li>
+                        <li class="shares_hide_li">
+                            <i class="fa fa-qq" aria-hidden="true"></i>
+                            <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='http://localhost:8080/ToSkyNews_war_exploded/swagger-ui.html#/'" class="shares_hide_li_text">QQ</a>
+                        </li>
+                    </ul>
+                    <div class="weixin_code">11111</div>
+                </div>
+            </div>
+            <!-- 中间部分 -->
+            <div class="recomments1_middle">
+                <div class="big_title">
+                    同心抗疫 让爱温暖流动
+                </div>
+                <div class="small_title">
+                    <span style="margin-right:10px ;">2022-04-07 10:20</span>
+                    <span style="color: #81bcf3;">科技</span>
+                    <span class="lookCount">显示浏览量</span>
+                </div>
+                <div id="recos1_content">
+                    <h1>这是文章内容</h1>
+                </div>
+                <div class="recos1_remark">
+                    <div class="recos1_title">共有 <span>2</span> 条评论</div>
+                    <div class="recos1_remark_text">
+                        <img src="img/zyt/user.jpeg" alt="" class="user_img remark_content_user">
+                        <button class="tosay">评论</button>
+                        <textarea name="" id="remark_area" placeholder="发表一条友善的评论..."></textarea>
+                    </div>
+                    <ul class="all_commit_1">
+                        <!-- <img src="img/zyt/user.jpeg" alt="" class="all_commit_a_pic"> -->
+                        <!-- <div class="all_commit_1_userName">这是我</div> -->
+                        <!-- <div class="all_commit_1_time">发布时间</div> -->
+                        <!-- <div class="all_commit_1_content">发布内容</div> -->
+                    </ul>
+                    <div class="all_commit">
+                        <div class="all_commit_a">
+                            <div class="all_commit_top">
+                                <img src="img/zyt/user.jpeg" alt="" class="all_commit_img">
+                                <a href="javascript:;" class="all_commit_name">发评人</a>
+                            </div>
+                            <div class="all_commit_text">这是评论的内容</div>
+                            <span style="display: none;" class="commentID"></span>
+                            <span style="display: none;" class="authorID"></span>
+                            <span style="display: none;" class="makerID"></span>
+                            <div class="all_commit_bon">
+                                <div class="all_commit_time">2021.10.12</div>
+                                <div class="all_commit_number"><span class="comsonnumber">0</span>条评论</div>
+                                <a class="com_reply" href="javascript:;">回复</a>
+                                <a class="com_delete" href="javascript:;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                        <div class="all_commit_a">
+                            <div class="all_commit_top">
+                                <img src="img/zyt/user.jpeg" alt="" class="all_commit_img">
+                                <a href="javascript:;" class="all_commit_name">发评人</a>
+                            </div>
+                            <div class="all_commit_text">这是评论的内容</div>
+                            <span style="display: none;" class="commentID"></span>
+                            <span style="display: none;" class="authorID"></span>
+                            <span style="display: none;" class="makerID"></span>
+                            <div class="all_commit_bon">
+                                <div class="all_commit_time">2021.10.12</div>
+                                <div class="all_commit_number"><span class="comsonnumber">0</span>条回复</div>
+                                <a class="com_reply" href="javascript:;">回复</a>
+                                <a class="com_delete" href="javascript:;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="comson">
+                                <div class="comson-a">
+                                    <img src="img/wzz/header.jpg" alt="">
+                                    <span style="display: none;" class="comson-a-userid"></span>
+                                    <span style="display: none;" class="comson-a-reviewid"></span>
+                                    <div class="comson-main">
+                                        <a href="javascript:;" class="comson-name">这是用户名</a> :
+                                        <div class="comson-text">
+                                            这是子评论内容这是子评论内容这是子评论内容这是子评论内容这是子评论内容这是子评论内容
+                                            这是子评论内容这是子评论内容这是子评论内容这是子评论内容这是子评论内容这是子评论内容
+                                        </div>
+                                        <div class="comson-ton">
+                                            <span class="comson-time">2021.12.13</span>
+                                            <a href="javascript:;" class="comson_reply">回复</a>
+                                            <a class="comson_delete" href="javascript:;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="comson-a">
+                                    <img src="img/wzz/header.jpg" alt="">
+                                    <span style="display: none;" class="comson-a-userid"></span>
+                                    <span style="display: none;" class="comson-a-reviewid"></span>
+                                    <div class="comson-main">
+                                        <a  href="javascript:;" class="comson-name">这是用户名</a> :
+                                        <div class="comson-text">
+                                            这是子评论内容这是子评论内容这是子评论内容这是子评论内容这是子评论内容
+                                        </div>
+                                        <div class="comson-ton">
+                                            <span class="comson-time">2021.12.13</span>
+                                            <a href="javascript:;" class="comson_reply">回复</a>
+                                            <a class="comson_delete" href="javascript:;"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="javascript:;" class="soncommore">观看更多回复...</a>
+                            </div>
+                            <div class="sayshow">
+                                <div class="all_commit_say">
+                                    <img src="img/zyt/user.jpeg" alt="" class="user_img">
+                                    <button class="comson-tosay">评论</button>
+                                    <textarea name="" class="comson-tosay-area" placeholder="发表一条友善的评论..."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="comend">已经是全部评论了...</div>
+                </div>
+            </div>
+            <!-- 右边部分 -->
+            <div class="recos1_right">
+                <div class="recos1_right_top">
+                    <img src="img/zyt/user.jpeg" alt="" class="right_top_img">
+                    <a id="publicer" href="javascript:;" class="publisher">发布用户</a>
+                    <button class="follow">+关注</button>
+                </div>
+                <div id="hot">
+                    <div class="hotnew-top">
+                        <div id="hotnew-title"><i class="icon ion-fireball"></i>&nbsp头条热榜</div>
+                        <div id="change"><i class="icon ion-refresh"></i>换一换</div>
+                    </div>
+                    <ul class="showBox">
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- wzz添加的反馈栏目 -->
+    <!-- 侧边框 -->
+    <div class="tool_item">
+        <a class="tool_item_a" href=""><i class="fa fa-refresh" aria-hidden="true"></i> 刷新</a>
+        <a class="tool_item_a" onclick="Feedback_show()" href="javascript:;"><i class="fa fa-pencil-square-o"
+                style="font-size: 20px;" aria-hidden="true"></i>举报</a>
+        <a class="tool_item_a" onclick="Topfun()" href="javascript:;"><i class="fa fa-arrow-up" style="font-size: 18px;"
+                aria-hidden="true"></i>置顶</a>
+    </div>
+    <div id="feedback">
+        <div id="feedback_main">
+            <div class="feedback_main_top">
+                举报栏目
+                <a href="javascript:;" onclick="Feedback_down()">×</a>
+            </div>
+            <div class="feedback_link">
+                <i>*</i>
+                举报类型：
+            </div>
+            <div class="feedback_link">
+                <input type="radio" class="feedback_sex" name="feedback_type" value="bug报备">政治相关
+                <input type="radio" class="feedback_sex" name="feedback_type" value="其他">内容侵权
+                <input type="radio" class="feedback_sex" name="feedback_type" value="优化推荐">内容涉黄
+                <input type="radio" class="feedback_sex" name="feedback_type" value="其他">其他
+            </div>
+            <div class="feedback_link">
+                <i>*</i>
+                联系方式：
+            </div>
+            <input type="text" class="feedback_send" placeholder="邮箱/电话号">
+            <div class="feedback_link">
+                <i>*</i>
+                举报信息：
+            </div>
+            <textarea type="text" class="feedback_text" placeholder="请填写举报内容"></textarea>
+            <div style="font-weight: 600;" class="feedback_link">
+                <i>*</i>
+                欢迎您的举报!
+                <i>*</i>
+            </div>
+            <button id="tofeedback" class="havaland">发送举报</button>
+        </div>
+    </div>
+    <!-- 反馈栏目 -->
+</body>
+<link rel="stylesheet" href="css/sweetalert.css" type="text/css">
+<script src="js/sweetalert-dev.js"></script>
+<script src="js/wzz/fire.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/wzz/report.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/zyt/js/recomments.js"></script>
+<script src="js/zyt/comment.js"></script>
+
+</html>

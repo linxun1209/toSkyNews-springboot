@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="css/yxy/myPage.css">
+    <link rel="stylesheet" href="css/wzz/new.min.css">
+    <link rel="shortcut icon" href="img/wzz/newicon.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="css/wzz/new.min.css">
+</head>
+<body>
+<!-- 用户自己的主页 -->
+<div class="personList">
+    <div class="addBtn">
+        <button class="left" index=0><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+        <button class="right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        <button class="leftAtt" index=0><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+        <button class="rightAtt"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
+        <div class="listNav">
+            <span class="fansNav">粉丝&nbsp&nbsp<span class="fansNum">0</span></span>
+            <span class="focusNav">关注&nbsp&nbsp<span class="focusNum">0</span></span>
+            <span class="close"><i class="fa fa-close"></i></span>
+        </div>
+        <div class="nullBox">
+            <p class="nullText"><i class="fa fa-user-times" aria-hidden="true"></i>还没有粉丝哦！</p>
+        </div>
+        <ul class="fansList">
+        
+        </ul>
+    </div>
+</div>
+<div id="all_top">
+    <div class="container2">
+        <div class="column_sort">
+            <a href="javascript:;">综合</a>
+            <a href="javascript:;">科学</a>
+            <a href="javascript:;">体育</a>
+            <a href="javascript:;">军事</a>
+            <a href="javascript:;">游戏</a>
+            <a href="javascript:;">娱乐</a>
+            <a href="javascript:;">其他</a>
+        </div>
+        <div class="top_find">
+            <input type="text" class="food_find_input" placeholder=" 请输入您要寻找的文章与描述">
+            <a href="javascript:;" class="food_find_bon"><i class="fa fa-search" aria-hidden="true"></i>搜索</a>
+        </div>
+        <button id="back_history" onclick="window.history.go(-1);">
+            <i class="fa fa-reply-all" aria-hidden="true"></i>
+        <btton>
+    </div>
+</div>
+<!-- 侧边框 -->
+<div class="tool_item">
+    <a class="tool_item_a" href=""><i class="fa fa-refresh" aria-hidden="true"></i> 刷新</a>
+    <a class="tool_item_a" onclick="Feedback_show()" href="javascript:;"><i class="fa fa-pencil-square-o" style="font-size: 20px;" aria-hidden="true"></i>反馈</a>
+    <a class="tool_item_a" onclick="Topfun()" href="javascript:;"><i class="fa fa-arrow-up" style="font-size: 18px;" aria-hidden="true"></i>置顶</a>
+</div>
+
+<!-- 页面主内容 -->
+<div class="allPage">
+    <div class="likeBox">
+        <p class="userName"></p>
+        <p>您共获得<span class="likeNum">0</span>个赞哦</p>
+        <i class="	fa fa-thumbs-o-up" style="color: rgb(221,127,143);"></i>
+        <button class="know">我知道了</button>
+    </div>
+    <div class="userBox">
+        <div class="userPrivate">
+            <div class="userHead"></div>
+            <i class="fa fa-venus" style="color: pink; " id="girl"></i><i class="fa fa-mars" id="boy"></i><div class="userName"></div>
+        </div>
+        <div class="userInform">
+            <span class="accountText">账号:</span><span class="account"></span>
+            
+            <button class="changeUser">修改个人资料</button>
+            <div class="relation">
+                <span class="like"><span class="likeNum">0</span>获赞</span>
+                <span class="fans"><span class="fansNum">0</span>粉丝</span>
+                <span class="focus"><span class="focusNum">2</span>关注</span>
+            </div>
+            <div class="brief"><span>个人简介:</span>&nbsp;&nbsp;<p class="briefText"></p></div>
+        </div>
+
+    </div>
+    <div class="works">
+        <div class="workNav">
+            <span class="myWorksNav" index=1>我的作品<span class="workNum"></span></span>
+            <span class="collectWorkNav">收藏<span class="collectNum"></span></span>
+            <span class="drafts"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>草稿箱</span>
+            <i class="fa fa-search" aria-hidden="true" id="find"></i>
+        </div>
+        <div class="searchNav">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <input type="text" class="searchInput" placeholder="搜索作品"/>
+            <span class="searchBox">搜索</span>
+            <span class="cancel">取消</span>
+        </div>
+        <div class="myWorks"></div>
+        <div class="loveWorks"></div>
+        <div class="workList">
+            <!-- 没有作品时 -->
+            <div class="empty">
+                <i class="	fa fa-file-text-o"></i>
+                <p class="noWork">暂未发表作品</p>
+            </div>
+            <!-- 有作品时 -->
+            <div class="haveWorks">
+                <!-- <div class="haveMyWork"></div> -->
+                
+            </div>
+            <span class="moreWorks">加载更多</span>
+                <!-- <div class="haveCollect"></div> -->
+            <span class="moreCollect">加载更多</span>
+        </div>
+    </div>
+</div>
+<!-- 弹窗 -->
+<div class="chooseCover">
+    <div class="tip">
+        <p class="tipText">确定要删除吗</p>
+        <div class="choose">
+            <button class="tipNo">取消</button>
+            <button class="tipOk">确定</button>
+        </div>
+    </div>
+</div>
+<div class="sureCover">
+    <div class="successTip">
+        <p class="successText">删除成功！</p>
+        <button class="successOk">确定</button>
+    </div>
+</div>
+
+    <!-- wzz添加的反馈栏目 -->
+    <div id="feedback">
+        <div id="feedback_main">
+            <div class="feedback_main_top">
+                反馈栏目
+                <img src="img/wzz/biaoqin1.gif" alt="">
+                <a href="javascript:;" onclick="Feedback_down()">×</a>
+            </div>
+            <div class="feedback_link">
+                <i>*</i>
+                反馈类型：
+            </div>
+            <div class="feedback_link">
+                <input type="radio" class="feedback_sex" name="feedback_type" value="优化推荐">优化推荐
+                <input type="radio" class="feedback_sex" name="feedback_type" value="bug报备">bug报备
+                <input type="radio" class="feedback_sex" name="feedback_type" value="其他">其他
+            </div>
+            <div class="feedback_link">
+                <i>*</i>
+                联系方式：
+            </div>
+                <input type="text" class="feedback_send" placeholder="邮箱/电话号">
+            <div class="feedback_link">
+                <i>*</i>
+                您的反馈：
+            </div>
+            <textarea type="text" class="feedback_text" placeholder="请填写反馈内容"></textarea>
+            <div style="font-weight: 600;" class="feedback_link">
+                <i>*</i>
+                欢迎您的反馈!
+                <i>*</i>
+            </div>
+            <button id="tofeedback" class="havaland">发送反馈</button>
+        </div>
+    </div>
+     <!-- 反馈栏目 -->
+     <script src="js/jquery-3.6.0.js"></script>
+<script src="js/wzz/feedback.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/yxy/myPage.js"></script>
+<script src="js/yxy/userBoxView.js"></script>
+<script src="js/yxy/myPageGet.js"></script>
+</body>
+</html>
